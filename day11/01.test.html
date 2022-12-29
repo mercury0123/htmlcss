@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <h1>
+        Q1. 2자리의 양의 정수를 입력하고, 그 수까지의 홀수 합과 짝수 합을 출력하기
+    </h1>
+
+    2자리의 양의 정수 입력 : <input type="number" id="input" width="200px" min="10" max="99" placeholder="2자리의 양의 정수 입력">
+    <br>
+    <button type="button" id="btn" onclick="subPrint()">출력</button>
+    <h1 id="print"></h1>
+    <script>
+        
+        function subPrint(){
+        
+            let odd = 0;
+            let even = 0;
+
+            let input = document.getElementById('input').value;
+            input = Number(input);
+        
+            if(input<10){
+                alert('두자리의 양의 정수를 입력하세요!!');    //두자리 양의 정수만!!
+                document.getElementById('input').focus();   //커서의 위치를 줌
+            } else {   
+                for(let i = 0; i<=input; i++) {            
+                    if(i%2==0){
+                        even+=i;
+                    } else {
+                        odd+=i;
+                    }
+                }
+                document.getElementById('print').innerHTML = `홀수의 합 :  ${odd} <br>`;
+                document.getElementById('print').innerHTML += `짝수의 합 :  ${even}`;
+                console.log('홀수의 합 : ', odd);
+                console.log('짝수의 합 : ', even);
+            }
+        
+        }
+
+    </script>
+</body>
+</html>

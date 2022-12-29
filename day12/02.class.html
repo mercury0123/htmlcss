@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        class는 객체를 생성하기 위한 템플릿
+    </h1>
+
+    <script>
+        class Car{  //Car 클래스명
+            constructor(name, year){    //constructor 생성자 name year
+                this.name = name;
+                this.year = year;
+                this.model="";
+            }
+        }
+
+        const myCar1 = new Car('포르쉐',2022);
+        const myCar2 = new Car('그랜져',2021);
+        console.log(myCar1);
+        console.log(myCar2);
+
+        let myCar3 = new Car(); //생성자 없이 객체생성
+        myCar3.name = '소나타';
+        myCar3.year = 2022;
+        console.log(myCar3);
+        console.log('------------------------------------------');
+        console.log(myCar1.name,myCar1.year);   //속성도 같이 적어주고 출력하면?
+        console.log(myCar2.name,myCar2.year);
+        console.log(myCar3.name,myCar3.year);
+        console.log('------------------------------------------');
+        let myCar4 = new Car('스파크',2020);
+        myCar4.model = 'LPG';
+        console.log(myCar4);
+        console.log(myCar4.name,myCar4.year,myCar4.model);  //속성도 같이 적어주고 출력하면?
+        
+        console.log('------------------------------------------');
+        class Rectangle{
+            constructor (height,width){
+                this.height = height;
+                this.width = width;
+            }
+            //method 추가
+            calcArea(){
+                return this.height * this.width;
+            }
+            //getter 추가
+            get area (){
+                return this.calcArea();
+            }
+        }
+
+        const square = new Rectangle (10,10);
+        console.log(square);
+        console.log('calcArea 메소드 출력 : ', square.calcArea()); //괄호까지 입력
+        console.log('get값 출력 : ', square.area);  //괄호입력 ㄴㄴ
+
+        //js 클래스에서는 생정자는 1개만 둘 수 있다★★★
+        console.log('------------------------------------------');
+
+        //class Point 생성 (5,5)로 출력
+        class Point{
+            constructor (a,b){
+                this.a=a;
+                this.b=b;
+            }
+            printPoint(){
+                return `(${this.a},${this.b})`;
+            }
+        }
+
+        const myPoint = new Point(5,5);
+        console.log(myPoint.printPoint());
+
+        console.log('--------------------------------------상속');
+        class Animal {              //클래스
+            constructor(name){      //생성자
+                this.name = name;
+            }
+            speak(){                //메소드
+                console.log(`${this.name} 울음소리`);
+            }
+        }
+        
+        class Dog extends Animal {
+            constructor(name){
+                // 상속받은 클래스에 '생성자가 있다'면 => super를 먼저 호출해주어야... 바로 this 로 값지정 ㄴㄴ
+                super(name);
+            }
+            speak(){
+                super.speak();
+                console.log("멍멍");
+            }            
+        }
+
+        let d = new Dog('뽀삐');
+        d.speak();
+        console.log('------------------------------------------');
+
+        // #변수 : private 선언, 변경시 set()이 필요
+        class Cat extends Animal {
+            //name = ''; //이렇게 멤버변수 줄수도 있음
+            //#name = '';
+            constructor(name){
+                super(name);    //super 를 먼저 호출안하고 this.name 하면 오류남
+                
+                //super(); 이렇게라도 super 먼저 해줘야함
+                //this.#name = name; 
+            }
+
+            set(name){
+                this.name.name;
+            }
+            speak(){
+                super.speak();
+                console.log(`${this.name} 야옹`);
+            }
+        }
+        let c = new Cat('호냥이');
+        c.speak();
+        //c.name="코비"; //이렇게 멤버변수 부여해서 바꿔줄수도 있음
+        c.set("호비");
+        c.speak();
+
+    </script>
+</body>
+</html>

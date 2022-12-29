@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2</title>
+</head>
+<body>
+    <h1>
+        Q2. 0~1000 사이의 정수 5개를 랜덤으로 생성하여 가장 큰 수와 가장 작은 수 출력
+    </h1>
+    <script>
+        
+        var arr =[];
+        document.write("랜덤정수는 : ");
+        for (let i=0; i<5; i++) {
+            var ranNum = Math.floor(Math.random() * 1001); //0~1000사이의 랜덤정수 생성
+            arr[i]= Math.floor(ranNum);
+            document.write(arr[i] + " ");
+        }
+        
+        var max = arr[0];
+        var min = arr[0];
+        for (let i=0; i<5; i++) {
+            if(max <= arr[i])max = arr[i];  
+            if(min > arr[i])min = arr[i];          
+        }
+        document.write("가장 큰 수는 : "+ max +" ");
+        document.write("가장 작은 수는 : "+ min);       
+        
+    </script>
+</body>
+</html>

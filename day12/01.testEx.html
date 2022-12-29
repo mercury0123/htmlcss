@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자야구게임</title>
+</head>
+<body>
+    <h1>
+    숫자야구게임 
+    ol li 태그로 순번 설정 으로 굳이 카운트 변수 필요 없게 
+    비정상 입력값에 대한 거름망
+    </h1>
+    <ol>
+        <li>세자리의 숫자는 각 자리수를 갖고 0~9까지 서로 중복되지 않는다</li>
+        <li>각 자리수와 입력한 숫자의 자리수가 동일하면 1strike</li>
+        <li>입력한 숫자가 포함되어 있으나 자리수가 동일하지 않으면 1ball</li>
+        <li>입력한 숫자가 전혀 포함되어 있지 않으면 out</li>
+        <li>3 스트라이트면 1게임 종료</li>
+    </ol>
+    <hr>
+    <button type="button" onclick="gameStart()">게임시작!!</button>
+    <h3 id="comMsg"></h3>
+    <input type="text" id="inputNum" placeholder="세자리 숫자를 입력">
+    <button type="button" onclick="result()">확인</button>
+    <ol id="printArea"></ol>
+
+    <script>
+        var comNum = new Set();
+        var userNum = new Set();
+        let count =0;
+
+        function gameStart() {
+            document.getElementById('comMsg').innerText = `컴퓨터가 숫자를 생성하였습니다`;
+            while (comNum.size < 3) comNum.add(Math.floor(Math.random() * 9)+1);
+            console.log(comNum);    // 컴퓨터 숫자 제대로 들어가는지 확인
+        }
+        
+        function result() {
+            userNum.clear();    //게임 중복안되게 클리어
+            let inputNum = document.getElementById('inputNum').value;
+            console.log(inputNum);  // 입력 숫자 제대로 들어가는지 확인
+               
+                
+            var result = [];
+            while(inputNum!=0) {
+                result.unshift(Math.floor(inputNum%10)); //입력받은 세자리를 한자리수 숫자로 배열로 저장  
+                inputNum /= 10; 
+                inputNum = Math.floor(inputNum);
+            }
+            console.log(result);    // 배열 제대로 들어가는지 확인
+            
+            for(let i=0; i<result.length; i++) userNum.add(Number(result[i]));  //변환된 한자리수를 userNum에 저장
+            console.log(userNum);   // 제대로 들어가는지 확인
+
+            if(userNum.size!=3){
+                alert('잘못된 입력값'); // 입력숫자 3자리 아닌 경우 경고창 출력
+                return;
+            }
+            count++;    //몇번 시도 했는지 체크
+            let stk =0; 
+            let ball = 0;
+
+            for (i in [...comNum]){
+                for (j in [...userNum]) {
+                    if([...comNum][i] == [...userNum][j] ) { 
+                        if(i == j) {    //값 & 자리수도 같다면 스트라이크
+                            stk++;
+                        } else {        //값만 같다면 볼
+                            ball++;
+                        }
+                    }
+                }
+            } 
+            console.log('스트라이크', stk); //스트라이크, 볼 제대로 들어가는지 확인
+            console.log('볼', ball);
+
+            //출력
+            if(stk == 0 && ball == 0) {
+                document.getElementById('printArea').innerHTML += `<li>OUT!!</li>`;  //여기 ${count} 넣어도 됨
+            } else if (stk==3){
+                document.getElementById('printArea').innerHTML += 
+                `<li>${[...userNum].join(',')} => 축~!! 게임종료!!</li>`;
+            } else {
+                document.getElementById('printArea').innerHTML += 
+                `<li>${[...userNum].join(',')} => ${stk}스트라이크, ${ball}볼</li>`;
+            }
+        }   
+    </script>
+</body>
+</html>

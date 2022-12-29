@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map 예제</title>
+</head>
+<body>
+    <h1>
+        Q1. 데이터를 입력할 인원수를 입력받고
+        각 개인의 html, css, js 과목의 점수를 입력하면
+        각 과목의 점수, 총점, 평균을 html의 table 태그에 출력하기
+    </h1>
+    <p>
+        <input type="number" id="peopleNum" placeholder="인원수 입력"><button type="button" onclick="printInput()">인원수 제출</button>
+    </p>    
+    <div class="inputArea"></div>
+    <button id="sbmBtn" onclick="scoreBoard()">성적계산 (Click!!)</button>
+    <div class="printArea">
+        <table id="printTable" border="1">
+            <tr>
+                <th>이름</th>
+                <th>HTML</th>
+                <th>CSS</th>
+                <th>JS</th>
+                <th>Total</th>
+                <th>Avg</th>
+                <th>Grade</th>
+            </tr>        
+        </table>
+    </div>   
+    
+    <script>
+        let num = 0;
+
+        function printInput(){
+            document.querySelector('.inputArea').innerHTML='';
+            num = Number(document.getElementById('peopleNum').value);
+
+            for(let i = 1; i <= num; i++){
+                document.querySelector('.inputArea').innerHTML+=
+                `이름 : <input type="text" id="name${i}" placeholder="이름 입력">, 
+                HTML : <input type="text" id="html${i}" placeholder="점수 입력">,
+                CSS : <input type="text" id="css${i}" placeholder="점수 입력">,
+                JS : <input type="text" id="js${i}" placeholder="점수 입력"> <br>`;
+            }
+        }
+
+        function scoreBoard(){
+            let name, grade = '';
+            let html, css, js, sum, avg = 0;
+            
+            num = Number(document.getElementById('peopleNum').value);
+            for(let i=1; i<=num; i++) {
+
+                name = document.getElementById(`name${i}`).value;
+                html = Number(document.getElementById(`html${i}`).value);
+                css = Number(document.getElementById(`css${i}`).value);
+                js = Number(document.getElementById(`js${i}`).value);
+
+
+                let arr =[html,css,js]; // 비정상 점수 alert 만들기!!
+
+                for(let i of arr) {
+                    if(i < 0 || i >100) {
+                        alert('점수는 0~100사이로 입력해주세요');  
+                        return ;
+                    }                   
+                }
+
+                // 정상점수 합계 평균 학점 만들기!!
+                sum=html+css+js;
+                avg=(sum/arr.length).toFixed(2);
+                grade = avg>=90 ? 'A' : avg>=80 ? 'B' : avg>=70 ? 'C' : avg>=70 ? 'D' :'F'; 
+
+                document.getElementById('printTable').innerHTML+=
+                `<tr><td>${name}</td><td>${html}</td><td>${css}</td><td>${js}</td><td>
+                ${sum}</td><td>${avg}</td><td>${grade}</td></tr>`;    
+                               
+            }
+        }
+    </script>
+</body>
+</html>

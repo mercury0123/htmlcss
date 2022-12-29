@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our superheroes</title>
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    
+  </head>
+  <style>
+    /* || general styles */
+
+    html {
+        font-family: 'helvetica neue', helvetica, arial, sans-serif;
+        
+    }
+    
+    body {
+        width: 800px;
+        margin: 0 auto;
+    }
+    
+    h1, h2 {
+        font-family: 'Faster One', cursive;
+        
+    }
+    
+    /* header styles */
+    
+    h1 {
+        font-size: 4rem;
+        text-align: center;
+    }
+    
+    header p {
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    /* section styles */
+    
+    section article {
+        width: 33%;
+        float: left;
+    }
+    
+    section p {
+        margin: 5px 0;
+    }
+    
+    section ul {
+        margin-top: 0;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+        letter-spacing: -5px;
+        margin-bottom: 10px;
+    }
+  </style>
+
+  <body>
+
+      <header></header>
+      <section></section>
+      
+    <script>
+        let header = document.querySelector('header');
+        let section = document.querySelector('section');
+
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+        .then(resp => resp.json())
+        .then(json => populateHeader(json));
+        
+        // 이 방법도 됨
+        // async function fetchAndAwait(){
+        //     try{
+        //         const resp = await fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+        //         const result = await resp.json();
+        //         console.log(result);
+        //         populateHeader(result);
+        //     }catch(error){
+        //         console.log(error);
+        //     }
+        // }
+        // fetchAndAwait();
+
+        //지금까지 JS를 이용해 HTML에서 뭔가를 가져왔음
+        //document.querySelector("#quote span:first-child") 이런식으로.
+
+        //하지만 먼저 JS에서 무언가를 만들어서 그걸 HTML에 넣어볼 수도 있음.
+        //이미지 여러개를 HTML만으로 랜덤하게 뜨게 넣을수없어서 JS를 통해
+        //이미지를 만들고 HTML에 넣어주어야한다. createElement => appendChild
+
+
+        function populateHeader(jsonObj){
+            let myH1 = document.createElement('h1');
+            myH1.innerText = jsonObj['squadName'];
+            header.appendChild(myH1);
+
+            let myPara = document.createElement('p');
+            myPara.innerText = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+            header.appendChild(myPara);  
+            showHeroes(jsonObj);
+        }
+
+        function showHeroes(jsonObj) {
+        var heroes = jsonObj['members'];
+
+        for (var i = 0; i < heroes.length; i++) {
+            var myArticle = document.createElement('article');
+            var myH2 = document.createElement('h2');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            myH2.innerText = heroes[i].name;
+            myPara1.innerText = 'Secret identity: ' + heroes[i].secretIdentity;
+            myPara2.innerText = 'Age: ' + heroes[i].age;
+            myPara3.innerText = 'Superpowers:';
+
+            var superPowers = heroes[i].powers;
+            for (var j = 0; j < superPowers.length; j++) {
+            var listItem = document.createElement('li');
+            listItem.innerText = superPowers[j];
+            myList.appendChild(listItem);
+            }
+
+            myArticle.appendChild(myH2);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myPara3);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+        }
+    </script>
+  </body>
+</html>

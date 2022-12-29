@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create</title>
+</head>
+<body>
+    <h1>
+        li tag 추가하는 예제
+    </h1>
+    <button type="button" id="btn1" onclick="onebyAll()">li태그 한번에 추가하기</button>
+    <button type="button" id="btn2" onclick="onebyOne()">li태그 하나씩 추가하기</button>
+    <button type="button" id="btn3" >li태그 한번에 추가하기</button>
+    <button type="button" id="btn4" >li태그 하나씩 추가하기</button>
+    <ul id="ul"></ul>
+    <hr>
+    <div id="ol"></div>    
+    <hr>
+    <ul id="ul2"></ul>
+    <hr>
+    <ol id="ol2"></ol>    
+    <hr>
+
+    <script>
+
+        let datas=[
+                'HTML','CSS','Javascript','SQL'
+            ];
+            
+        function onebyAll(){
+
+            let string = document.getElementById('ul').innerHTML =
+            `<li>HTML</li><li>CSS</li><li>Javascript</li><li>SQL</li> `;
+           
+        }
+        
+        function onebyOne(){            
+            
+            var list = "<ol>";
+                let i =0;
+                if(i<datas.length){
+                    let list = `<li>${datas[i]}</li>`;                    
+                    document.getElementById('ol').innerHTML+=list;  
+                    i++;     
+                }
+                    
+        }
+
+        document.getElementById('btn3').addEventListener('click',()=>{
+            let ulTag = document.getElementById('ul2');
+            datas.forEach((elem)=>{
+                let liTag = document.createElement('li');   //<li></li>
+                let aTag = document.createElement('a');     //<a></a>
+                aTag.setAttribute('href',`#${elem.toLowerCase()}`); //href="#~"
+                aTag.innerText = elem;      //<a href="#~">HTML</a>
+                liTag.appendChild(aTag);    //<li><a href="#~">HTML</a></li>
+                ulTag.appendChild(liTag);   //<ul><li><a href="#~">HTML</a></li></ul>
+            });
+        });
+
+        let index=0;
+        const ol2 = document.getElementById('ol2');
+        document.getElementById('btn4').addEventListener('click',()=>{
+            if (index<datas.length){
+                let liTag = document.createElement('li');   //<li></li>
+                let aTag = document.createElement('a');     //<a></a>
+                aTag.setAttribute('href',`#${datas[index].toLowerCase()}`); //href="#~"
+                aTag.innerText = datas[index];      //<a href="#~">HTML</a>
+                liTag.appendChild(aTag);    //<li><a href="#~">HTML</a></li>
+                ol2.appendChild(liTag);   //<ol><li><a href="#~">HTML</a></li></ol>
+                index++;
+            }
+        });
+    </script>
+</body>
+</html>

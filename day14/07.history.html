@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history</title>
+</head>
+<body>
+    <h1>
+        브라우저가 저장하고 있는 방문 페이지의 기록을 관리하는 객체
+    </h1>
+    <ul>
+        <li>브라우저 설정에서 방문한 페이지의 기록을 지우면 모두 지워진다</li>
+        <li>브라우저의 저장소를 기반으로 하기 때문에 보안이슈로 접근방어를 해놓은 경우
+            작동하지 않을 수 있음
+        </li>
+        <li>
+            history.back(), history.forward(), history.go() 탐색가능
+        </li>
+    </ul>
+
+    <button type="button" id="back">back</button>
+    <button type="button" id="forward">forward</button>
+    <input type="text" id="n"><button type="button" id="go">go(n)</button>
+
+    <script>
+        document.getElementById('back').onclick = ()=> {
+            history.back();
+        }
+        document.getElementById('forward').onclick = ()=> {
+            history.forward();
+        }
+        document.getElementById('go').onclick = ()=> {
+            let num = Number(document.getElementById('n').value);   //입력값 숫자로 변환
+            history.go(num);    //입력값으로 이동
+        }
+        console.log(window.history);
+    </script>
+</body>
+</html>

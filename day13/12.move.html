@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        body {
+            background-color: brown;            
+        }
+        .icon{
+            position: absolute;            
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48;
+            color: white;
+            font-size: 4rem;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="icon">
+        <span class="material-symbols-outlined">favorite</span>
+    </div>
+    <script>
+        //마우스 움직임에 따라 좌표 변경
+        var icon = document.getElementsByClassName("icon").item(0);
+        document.addEventListener("mousemove",(e)=>{
+            console.log(e.clientX);
+            console.log(e.clientY);
+            const iconX = e.clientX;
+            const iconY = e.clientY;
+
+            icon.style.left = iconX + 'px';
+            icon.style.top = iconY + 'px';
+            
+        });
+    </script>
+</body>
+</html>

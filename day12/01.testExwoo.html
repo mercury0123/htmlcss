@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+    <title>야구 게임</title>
+</head>
+<body>
+    <form action="">
+        <input type="number" id="num">
+        <button type="button" onclick="createComputerButton();">create computer's number</button>
+        <button type="button" onclick="baseballButton(num.value);">check</button>
+    </form>
+    <ol id="result"></ol>
+    <script>
+        var computerSet = new Set();
+        var userSet = new Set();
+        function createComputerButton(){
+            computerSet = createComputerNumber();
+            console.log(computerSet);
+        }
+        function baseballButton(num){
+            userSet = createUserNumber(num);
+            var result = checkSB([...userSet], [...computerSet]);
+            createHTML([...userSet], result[0], result[1]);
+        }
+        function createComputerNumber(){
+            var set = new Set();
+            while(set.size<3) set.add(Math.floor( Math.random()*9+1 ));
+            return set;
+        }
+        function createUserNumber(num){
+            console.log("create user number function");
+            if(checkValidity(num) == false){
+                alert("잘못된 입력이에요.");
+                return;
+            }
+            var result = [];
+            for(i=0; i<3; i++){
+                result.unshift(Math.floor(num%10));
+                num /= 10;
+            }
+            return result;
+        }
+        
+        function checkValidity(num){
+            // 입력의 유효성 검사
+            console.log("check validity function");
+            num = Number(num);
+            if(100<num && num<1000) return true;
+            return false;
+        }
+        function createHTML(arr, strike, ball){
+            console.log(strike);
+            if(strike==0 && ball==0){
+                document.getElementById("result").innerHTML += `<li>OUT</li>`;
+            }else if(strike==3){
+                document.getElementById("result").innerHTML += `<li>Success</li>`;
+            }else{
+                var result = `<li>${arr[0]}, ${arr[1]}, ${arr[2]} => ${strike}Strike, ${ball}Ball</li>`;
+                document.getElementById("result").innerHTML += result;
+            }
+        }
+        function checkSB(user, computer){
+            var result = [0, 0];
+            for(i in user){
+                for(j in computer){
+                    if(user[i] == computer[j]){ // 숫자가 동일
+                        if(i == j){ // 자리수가 동일
+                            result[0] ++;
+                        }else result[1] ++;
+                    }
+                }
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>

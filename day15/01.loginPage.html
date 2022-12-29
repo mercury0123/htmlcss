@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+    <!-- 
+        정규식 ^ & 시작과 끝
+        a-zA-Z0-9\w  영어 대소문자 숫자 + _(밑줄) 도 포함
+        \d 숫자
+        ?=.* 를 포함한 괄호에 대해서 전방 탐색
+        . 모두 의미
+        '?'없거나 한개 '*' 없거나 여러개 있거나 '+' 최소한개거나 여러개
+        {min,max} min이상max이하
+    -->
+</head>
+<style>
+    * {
+        box-sizing: border-box; /* 실무에서 css 설정에 거의 작성 되어 있음 */
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(27, 188, 155);  
+    }
+    .container {
+        width: 300px;
+        position: absolute;
+        margin: 0;
+        top: 50%;   /*가운데정렬*/
+        left: 50%;  /*가운데정렬*/
+        transform: translate(-50%, -50%); /*가운데정렬*/
+        background-color: aliceblue;
+        text-align: center;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    input {
+        padding: 10px;
+    }
+    .text-field {
+        font-size: 0.75em;
+        border: 0px;
+        width: 93%; /* box-sizing: border-box; 설정 후 => 100%*/
+        margin: 0px 0px 10px;
+        border-radius: 5px;
+    }
+    .btn-input {
+        font-size: 0.75em;
+        border: 0px;
+        width: 100%;
+        margin: 0px 0px 30px;
+        border-radius: 5px;
+        color: white;
+        background-color: #aaa;
+        /* background-color: rgb(27, 188, 155);   */
+    }
+    .links{
+        text-align: center;
+        margin: 0px;  
+    }
+    .links a {
+        font-size: 0.75em;
+        color: silver;
+        padding: 0px;
+        margin: 0px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form action="">
+      <input type="text" class="text-field" placeholder="아이디"><br>
+      <input type="password" class="text-field" placeholder="비밀번호"><br>
+      <input type="submit" class="btn-input" value="로그인" disabled>
+    </form>
+    <div class="links">
+      <a href="#">비밀번호를 잊어버리셨나요</a>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.querySelector('.btn-input');
+    const inputs = document.querySelectorAll('.text-field');
+    
+    function buttonActivation() {
+      let uid = document.querySelector('input[type="text"]').value;
+      let upw = document.querySelector('input[type="password"]').value;
+
+      // let reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$/ .test(upw);
+      // let reg = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#$]).{4,8}$/ .test(upw);
+      let reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$])[\da-zA-Z!@#$]{4,}$/ .test(upw);   //패스워드 정규식
+     
+
+      // if(uid.length > 7 && reg){
+      //   btn.style.setProperty('background-color','rgb(27, 188, 155)');
+      //   btn.disabled = false;
+      // }else{
+      //   btn.style.setProperty('background-color','#aaa');
+      //   btn.disabled = true;
+      // }
+
+      let flag = uid.length > 7 && reg; //ID 7자 이상 && reg 정규식 패턴 맞을 경우 flag 값 true
+      console.log(uid, upw, reg, flag);
+      
+      btn.style.setProperty('background-color',
+      `${flag ? 'rgb(27, 188, 155)': '#aaa'}`);
+
+      btn.disabled = !flag;
+      // btn.disabled = (uid.length > 7 && reg) ? false : true;
+    }
+    
+    document.querySelectorAll('.text-field').forEach((node) => {
+      node.addEventListener('input',buttonActivation);
+    });
+    </script>
+</body>
+</html>

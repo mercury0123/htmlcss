@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>itemList</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(250, 206, 112);
+        }
+        #wrapper {
+            width:600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            background-color: blue;
+            padding: 30px 30px;
+            color: white;
+            text-align: center;
+        }
+        input {
+            border: none;
+            width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .addBtn{
+            padding: 10px;
+            width: 50px;
+            border: none;
+            background-color: white;
+            text-align: center;
+        }
+        form::after {
+            content:"";
+            display:table;
+            clear:both;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul li {
+            position: relative;
+            padding:12px 8px 12px 40px;
+            background: white;
+            font-size: 16px;
+        }
+        ul li:nth-child(odd) {
+            background-color:#f9f9f9;
+        }
+        ul li:hover {
+            background-color: rgb(177, 177, 177);
+        }
+        .close{
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px;
+            border: none;
+            background: rgb(255, 255, 255);
+        }
+        .close:hover {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <h1>여행준비물 점검목록</h1>
+        <form>
+            <input type="text" id="item" autofocus="true" placeholder="준비물 입력">
+            <button type="submit" id="add" class="addBtn">추가</button>
+        </form>
+        <div id="itemList"></div>
+    </div>
+
+    <script>
+        var itemList = [];
+    
+        var addBtn = document.querySelector("#add");
+        addBtn.addEventListener("click", addList); 
+    
+        function addList() {
+            event.preventDefault(); //입력후 엔터쳐도 추가되게, 이럴경우 버튼타입이 submit 이어야함
+            var item = document.querySelector("#item").value;
+
+            if (item != null) {
+                itemList.push(item);                            //입력값을 배열에 추가
+                document.querySelector("#item").value = "";     //입력 창 초기화
+                document.querySelector("#item").focus();
+            }            
+            showList();
+        }
+    
+        function showList() {  
+            var list = "<ul>";
+
+            for (var i=0; i<itemList.length; i++) {  //입력 값을 배열에 넣고 그 수에 따라 리스트 추가
+                list += "<li>" + itemList[i] + "<span class='close' id=" + i + ">X</span></li>"; // 늘어난 리스트 수만큼 X 도 추가
+            }
+
+            list += "</ul>";
+      
+            document.querySelector('#itemList').innerHTML = list;
+      
+            var remove = document.querySelectorAll(".close");   
+
+            for(var i = 0; i < remove.length; i++) {
+                remove[i].addEventListener("click", removeList);
+            }
+        }
+    
+        function removeList() {
+            var id = this.getAttribute("id");
+            itemList.splice(id, 1);
+            showList();
+        }
+    </script>
+</body>
+</html>

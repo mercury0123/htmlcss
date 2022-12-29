@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <h1>
+        JSON : Java Script Object Notation : 자바스크립트 객체 표기법
+    </h1>
+    <ul>
+        <li>데이터의 요청 및 응답처리에 필요한 데이터의 표준형식을 제공하는 타입</li>
+        <li>백엔드 언어의 종류에 관계없이 데이터 송수신을 단일 형식으로 통일함</li>
+        <li>데이터의 전송은 '모두 string 타입'으로 이루어지기 때문에 송수신 모듈에서 '타입의 변환이 필요'함 ★★</li>
+        <li>서버로 데이터를 보낼 때 > json to string > JSON.stringify(jsObject)</li>
+        <li>서버로 부터 데이터를 받을 때 > string to json > JSON.parse(stringData)</li>        
+    </ul>
+    <script>
+        const stringData = `{"id":"0001","type":"donut","name":"cake",
+        "image":{"url":"image/0001.jpg","width":200,"height":200},
+        "thumbnail":{"url":"image/thumbnails/0001.jpg","width":32,"height":32}}`;
+
+        let parsedData = JSON.parse(stringData);        
+        console.log(parsedData);
+
+
+        console.log('---------줄바꿈---------');
+
+        //parsedData를 console key : value 형태로 출력해보기 for(in) 사용
+
+        //parsedData[i] : value 값. i는 key 값
+
+        for(let i in parsedData){
+            if(i == 'image' || i == 'thumbnail'){
+                console.log(i);
+                for(let j in parsedData[i]){
+                    console.log(`Key = ${j} : Value = ${parsedData[i][j]}`);    //parsedData.image||thumbnail.url 값은?
+                }
+            }else{
+                console.log(`Key = ${i} : Value = ${parsedData[i]}`);
+            }
+        }
+
+        console.log('---------줄바꿈---------');
+        for(i in parsedData){
+            if(typeof parsedData[i] == "object"){   //value의 값이 object 형식을 가지고 있는 값만 순회
+                console.log(`${i} : `);
+                for(j in parsedData[i]){
+                    console.log(`Key = ${j} : Value = ${parsedData[i][j]}`); //parsedData.image||thumbnail.url 값은?
+                }
+            } else console.log(`Key = ${i} : Value = ${parsedData[i]}`);
+            
+        }
+        console.log('---------줄바꿈---------');
+        const myInfo = {
+            "name": 'Ohmiran',
+            "age" : '42',
+            "blood" : 'O',
+            "addr" : 'incheon'
+        };
+
+        let myInfoString = JSON.stringify(myInfo);
+        console.log(myInfoString);
+        console.log(typeof myInfoString);
+
+        
+        for (i in myInfo){
+            console.log(i,':',myInfo[i]);
+        }
+
+        
+
+
+    </script>
+</body>
+</html>

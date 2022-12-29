@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day03_04.travel예제 다시도전!!</title> 
+
+    <style>
+        
+        body {
+            background-color: burlywood;
+            text-align: center;
+        }
+        h1 {
+            border: 5px solid black;
+            width: 30%;
+            height: 50px;
+            margin: 30px auto;           
+        }
+        ul {
+            /*border : 1px dashed red;*/
+            list-style: none;
+            width: 50%;
+            margin: 10px auto;
+        }
+        li {
+            display: inline;
+            /*위아래 / 왼쪽오른쪽*/
+            margin: 0 33px;
+        }       
+        
+    </style>
+</head>
+<body>
+    <h1>Travel</h1>
+    <hr>
+    <ul>
+        <li><a id="비행기" class="links">Home</a></li>        
+        <li><a id ="서울" class="links">Seoul</a></li>
+        <li><a id ="도쿄" class="links">Tokyo</a></li>
+        <li><a id ="파리" class="links">Paris</a></li>
+        <li><a id ="뉴욕" class="links">Newyork</a></li>  
+    </ul>
+    <hr>
+    <div id="zone">
+        <!-- <img  id="pic" src="/image/girl.png" alt=""> -->
+    </div>    
+    <script>
+        //11.mouseover_sensei.html 참고할것
+        document.addEventListener('click', (e)=>{if(e.target.className == "links") 
+        document.getElementById("zone").innerHTML = `<img src="/img/${e.target.id}.jpg">`;});
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이미지 바꾸기</title>
+  <style>
+    #container{
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        padding-top: 20px;
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+    <div id="container">
+        <img
+        onmouseover="changeBoy(this)"
+        onmouseout="changeGirl(this)"
+        src="/img/boy.png"
+        >
+    </div>
+
+<script>
+    function changeBoy(img) {
+        img.setAttribute('src', '/img/boy.png');
+    }
+
+    function changeGirl(img) {
+        img.setAttribute('src', '/img/girl.png');
+    }
+
+    
+</script>
+</body>
+</html>

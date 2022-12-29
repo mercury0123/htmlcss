@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let myAccount ={
+            name : 'Hong',
+            balance : 0,
+            deposit: function(amount) { //입금
+                this.balance += amount;
+            },
+            withdraw: function(amount) { //출금
+                this.balance -= amount;                
+            },
+            transfer: function(amount, otherAccont) { //송금
+                this.balance -+ amount;
+                otherAccont.balance += amount;
+            }
+        }
+
+        let yourAccount ={
+            name : 'Kim',
+            balance : 1000,
+            deposit: function(amount) { //입금
+                this.balance += amount;
+            },
+            withdraw: function(amount) {    //출금
+                this.balance -= amount;                
+            },
+            transfer: function(amount, otherAccont) { //송금
+                this.balance -+ amount;
+                otherAccont.balance += amount;
+            }
+        }
+        // 내 계좌에 입금
+        console.log(myAccount.name,":",myAccount.balance);
+        myAccount.deposit(1000);        
+        console.log(myAccount.name,":",myAccount.balance);
+        // 출금
+        myAccount.withdraw(500);
+        console.log('--------------------------');
+        // 송금
+        myAccount.transfer(300,yourAccount);
+        console.log(myAccount.name,":",myAccount.balance);
+        console.log(yourAccount.name,":",yourAccount.balance);
+
+        console.log('--------------------------');
+
+        //BankAccount class 생성        
+        //객체2개 만들고 이름 잔액 입력받고 입금 송금 출금 잘되는지 체크
+
+        class BankAccount {
+            constructor (name, amount) {
+                this.name=name;
+                this.balance=amount;
+            }
+            deposit (amount) { //입금 메소드
+                this.balance += amount;
+            }                
+            withdraw (amount) { //출금 메소드
+                this.balance -= amount;                
+            }                
+            transfer (amount, account) { //송금 메소드
+                this.balance -= amount;
+                account.balance += amount;
+            }
+        }
+
+        let myAcc = new BankAccount ('강민주',10000);   // 초기입금액 설정
+        console.log(myAcc);
+
+        let yourAcc = new BankAccount('강민서', 100000); // 초기입금액 설정
+        console.log(yourAcc);
+
+        myAcc.deposit(100000);  //강민주 입금 10만원
+        console.log(myAcc);
+
+        yourAcc.withdraw(5000);    //강민서 출금 5천원
+        console.log(yourAcc);
+
+        yourAcc.transfer(45000,myAcc);  //강민서 -> 강민주 송금
+        console.log(myAcc);
+        console.log(yourAcc);
+
+        myAcc.transfer(7000,yourAcc);   //강민주 -> 강민서 송금
+        console.log(myAcc);
+        console.log(yourAcc);
+
+    </script>
+</body>
+</html>

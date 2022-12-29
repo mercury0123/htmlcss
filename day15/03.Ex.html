@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <header></header>
+    <section></section>
+
+    <script>
+        let header = document.querySelector('header');
+        let section = document.querySelector('section');
+
+        async function fetchAndAwait(){
+            try{
+                const resp = await fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+                const result = await resp.json();
+                console.log(result);    //제대로 들어가는지  확인
+                populateHeader(result);
+                for(i of result.members) showHeroes(i);
+            }catch(error){
+                console.log(error);
+            }
+        }
+        fetchAndAwait();
+
+        function populateHeader (result){
+            var title = document.createElement('article');
+            title.innerText = result['squadname'];
+            header.appendChild(title);
+
+            var subtitle = document.createElement('p');
+            subtitle.innerText = `Hometown: ${result.hometown} // Formed: ${result.formed}`;
+            header.appendChild(subtitle);
+
+        }
+        function showHeroes (result){
+            var section = document.createElement('section');
+            var members = document.createElement('h2');
+            members.innerText = result.name;
+            var desc = document.createElement('p');
+            desc.innerHTML += `Secret ID : ${result.secretIdentity} <br>`;
+            desc.innerHTML += `Age : ${result.age} <br>`;
+            desc.innerHTML += `Superpowers : <br>`;
+            var ul = `<ul>`;
+            for(i of result.powers) ul += `<li>${i}</li>`;
+            ul += `</ul>`;
+            desc.innerHTML += ul;
+
+            section.appendChild(members);
+            section.appendChild(desc);
+            document.getElementById('section').appendChild(section);
+
+        }
+    </script>
+</body>
+</html>

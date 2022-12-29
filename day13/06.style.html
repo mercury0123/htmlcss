@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>style</title>
+    <style>
+        .yellow{
+            background-color: yellow;
+            border: 1px solid black;
+        }
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        css 적용은 element.style.property의 형식으로 접근, 변경을 하면 된다
+    </h1>
+    <ul>
+        <li>property는 자바스크립트의 코드이기 때문에 띄어쓰기나 -(하이픈)이 적용안됨</li>
+        <li>
+            css의 property는 -(하이픈)을 제거하고 바로 뒤에오는 문자를 대문자로 변경
+            즉, cameCase 형식으로 만들어 사용한다고 생각하면 쉬움
+        </li>
+    </ul>
+    <h1 id="h1" class="a">
+        색상명을 입력하고 색상변경 버튼을 클릭하면 현재 h1 태그의 배경색이 입력한 배경색으로 변경
+    </h1>
+    <hr>
+    <input type="text" id="colorValue"><button type="button" id="changeBtn">색상변경</button>
+    <br><br>
+    <hr>
+    <img src="/img/냥.jpg" alt="냥" id="img">
+    <br>
+    <input type="text" id="attrName"><input type="text" id="attrValue">
+    <button type="button" id="btn">속성변경테스트</button>
+    <script>
+        document.getElementById('changeBtn').addEventListener('click',function(){
+            const h1 = document.getElementById('h1');
+            let colorValue = document.getElementById('colorValue').value; //색상이름
+            h1.className=colorValue;    //yellow red blue
+        });
+
+        document.getElementById('btn').addEventListener('click',function(){
+            const img = document.getElementById('img');
+            let attrName = document.getElementById('attrName').value;   //키값
+            let attrValue = document.getElementById('attrValue').value; //벨류값
+            //img[attrName] = attrValue;
+            img.setAttribute(attrName,attrValue);   //버튼 클릭시, 해당하는 xx 값을 oo값으로 변경
+        });
+
+        //css 변경대상도 분량도 별로 없을때 이렇게 직접 변경
+        const lis = document.getElementsByTagName('li');
+        for (const li of lis) { //배열이므로 of 씀
+            li.style.backgroundColor = 'black'; //css는 중간에 - 있지만 background-color, 이건 - 없이 바로 다음문자 대문자 처리
+            li.style.color = 'yellow';
+            li.style.setProperty('text-decoration','underline');
+        }
+    </script>
+
+</body>
+</html>
