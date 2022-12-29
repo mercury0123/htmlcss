@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textarea</title>    
+</head>
+
+<body>
+    <!--
+        input text 속성은 한줄의 문자열을 입력받음. 
+        그런데 textarea는 여러줄의 문자열을 입력받을 수 있다.
+        - 속성
+        - cols : 열의 수, 글자수, 한 행에 몇글자 까지 가능, cols+1 자 까지 가능
+        - rows : 행의 수, 줄 수
+        - minlength : 최소글자수
+        - maxlength : 최대글자수, 속성이 없으면 제한 없음.
+        - 문의사항, 댓글 글자를 남길 때 사용.
+        - 게시판처럼 복잡한(서식이 있는) 경우에는 플러그 인을 사용        
+    -->
+    <form action="">
+    <textarea id="textInput" cols="50" rows="30">text</textarea>
+    <br>
+    <input id="check" type="checkbox" checked="checked" value="text">text
+    </form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>naver버튼</title>
+</head>
+<body>
+    <!-- a태그와 button을 이용하여 네이버로 이동하는 버튼을 생성 -->
+
+    <!-- a태그 안에 button을 넣으면 button 모든 영역을 클릭하면 이동됨-->
+    <a href="http://www.naver.com" target="_blank"><button>naver</button></a> 
+    <br>
+
+    <!-- button 안에 a태그를 넣으면 button 내부에 naver 글씨를  클릭해야만  이동됨-->
+    <button><a href="http://www.naver.com" target="_blank">naver</a></button>
+    
+    <!-- 나중에 버튼 사이즈가 커지게 되면 실익이 존재-->
+
+    <!-- button 태그
+        input, button 둘다 버튼을 만들 수 있음
+        input : 단일태그, button : 쌍태그 
+        input 보다 button을 더 많이 사용 
+        button 태그안의 문자를 이용하여 버튼의 이름지정 
+        form 태그안에 button을 쓰면 기본이 submit 속성을 갖는다
+        submit 버튼은 같은 부모의 form 태그안에 있는 input 태그들의 데이터를 전송 -->
+
+    <form action="">
+        <input type="text" name="test">
+        <br>
+        <input type="button" value="일반버튼">
+        <button type="button">button</button>
+        <br>
+        <input type="reset" value="리셋버튼">
+        <button type="reset">reset</button>
+        <br>
+        <input type="submit" value="전송버튼">
+        <button type="submit">submit</button>
+        <button>기본버튼 </button> <!-- form 태그 안이므로 이 button은 submit 형태가 됨-->
+    </form>
+</body>
+</html>

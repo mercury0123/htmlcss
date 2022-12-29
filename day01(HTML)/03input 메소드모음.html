@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03input</title>
+</head>
+<body>
+    <!-- input : 단일태그, 속성값에 따라 다양한 기능들을 활용가능 
+    input은 form 태그와 같이 사용
+    <input type ='속성명'>
+    -->
+    <!-- type = "text" : 문자열을 입력받을 때 사용,
+    placeholder : 흐리게 표시, 문자를 입력하면 사라짐 -->
+    아이디 : <input type="text" placeholder="ID"><br>
+    패스워드 : <input type="text" placeholder="PassWord"><br>
+    
+    <!-- type = "button" : 일반버튼
+        type = "reset" : 리셋 버튼
+        type = "submit" : 전송 버튼 (서버로 전송하는 버튼)
+        <button> tag 에서도 동일하게 사용-->
+
+    <form action=""> <!-- 액션지금은 비워둠-->
+        <input type="text" name="data"> <br>
+        <input type="button" value="button"><br>
+        <input type="reset" value="reset"><br>
+        <input type="submit" value="submit"><br> <!-- 입력값이 URL에도 기록됨. 변수값 기록-->
+    </form>
+    <input type="password"> <!-- 비밀번호 입력시 사용 *()로 표시. 브라우저마다 다름 비번 숨김기능-->
+    <hr>
+    <!-- type="checkbox" : 댜중 선택을 이용할 때 사용-->
+    <form action="">
+        좋아하는 과일을 선택해주세요. (복수선택가능) <br>
+        <input type="checkbox" name="fruit" value="apple"> 사과
+        <input type="checkbox" name="fruit" value="orange"> 오렌지
+        <input type="submit"> 제출
+        <!-- url에 apple orange 추가됨 -->
+        <hr>
+    </form>
+    <!-- type="radio" : 하나만 선택 시 (복수선택x) -->
+    <form action="">
+        좋아하는 과일을 선택해주세요. (복수선택불가능) <br>
+        <input type="radio" name="fruit" value="apple">apple
+        <input type="radio" name="fruit" value="orange">orange
+        <input type="submit" value="제출"> 제출
+    </form>
+    <hr>
+    <!-- 위 두 명령어의 경우는 체크박스 체크라운드 범위가 작음 체크 범위를 확장하려면? -->
+    <form action="">
+        <label for="apple">         <!-- label로 이렇게 체크입력범위를 확장 checkbox로 중복체크o-->
+            <input type="checkbox" name="fruit" value="apple" id="apple">apple            
+        </label>
+        <label for="orange">
+            <input type="checkbox" name="fruit" value="orange" id="orange">orange
+        </label>
+        <input type="submit" value="submit"> 
+    </form>
+    <hr>
+    <form action="">                <!-- checkbox가 아닌 radio로 중복체크 x 해도 label 과 id 값이 중복되면 X -->
+        <label for="apple1">         
+            <input type="radio" name="fruit" value="apple" id="apple1">apple            
+        </label>
+        <label for="orange1">
+            <input type="radio" name="fruit" value="orange" id="orange1">orange
+        </label>
+        <input type="submit" value="submit"> 
+    </form>
+    <hr>
+    <!-- 10,20,30,40대 이상 선택 radio 값으로 선택 name="ages"-->
+    <form action=""> <p>나이를 선택해주세요</p>
+        <label for="10대">
+            <input type="radio" name="ages" value="10대" id="10대">10대
+        </label>
+        <br>
+        <label for="20대">
+            <input type="radio" name="ages" value="20대" id="20대">20대
+        </label>
+        <br>
+        <label for="30대">
+            <input type="radio" name="ages" value="30대" id="30대">30대
+        </label>
+        <br>
+        <label for="40대">
+            <input type="radio" name="ages" value="40대" id="40대">40대이상
+        </label>
+        <br>
+        <input type="submit" value="submit"> 
+    </form>
+    <hr><br>
+    <form action="">
+        <!-- type="color" : 색을 선택할 때 사용, 색상 정보는 url에 16진수로 표현 -->
+        <input type="color" name="color">
+        <input type="submit" value="제출">
+    </form>
+    <br><hr>
+    <!-- type="month" : 년월을 표시
+        type="week" : 년주
+        type="date" : 년월일
+        type="datetime-local" : 년월일시분초
+        type="time" : 시분초표시-->
+    <p><input type="month"> <br>
+    <input type="week"> <br>
+    <input type="date"> <br>
+    <input type="datetime"> <br>
+    <input type="datetime-local"> <br>
+    <input type="time"> </p>    
+    <hr>
+    <!-- type="email" : 이메일 형식만 입력할 수 있게 체크 @ 
+    형태가 맞지 않으면 알림창 pop 
+    type="url" URL만 -->
+    <p>
+    <form action="">
+        <input type="email" name="email">이메일
+        <input type="url" name="" id=""> URL
+        <input type="submit" value="제출">
+    </form>
+    </p><hr>    
+    <!-- type="search" : 문자열을 입력할 때 뒤에 x 버튼이 생성-->
+    <input type="search"> search
+    <br><hr>    
+    <!-- 첨부파일 선택 -->
+    <input type="file"> 첨부파일 선택 
+    <br><hr>
+    <!-- type ="hidden" : 값을 안보이게 숨김 -->
+    <input type="hidden" name="hi" value="hihi"> 값을 안보이게 숨김
+    <!-- 실무에서 자주 사용. 내부적으로 무언가 구분지을때 -->
+    <br><hr>
+    <!-- type ="number" : 숫자만 입력가능 위아래 화살표-->
+    <input type="number"> 숫자만 입력가능
+    <br><hr>
+    <!-- type ="image" : 그림을 넣어주는 태그 img 태그로 대체가능 
+    src 라는 속성이 있는데, 이는 이미지의 주소, 저장경로
+    alt 는 이미지가 없을때 보여질 글자-->
+    <input type="image"
+    src="https://lh3.googleusercontent.com/pw/AL9nZEXlU01w09ExOliVTdMG3aYuOZvbtfXlPyi9L-25yq5uioLYUYNLc78YlnZPHVMBCGuoi24JqKtec-FJ7ZRRKm9RmsJh1M9Y-C-YSW8V5rJLwgchaVw0Ne-wAmyZNUWLcR8dGG4pGQwlkwwfMtFMU2E7Jw=w400-h345-no?authuser=1" 
+    alt="엑박">
+    <br>
+    <input type="image"
+    src="" 
+    alt="엑박">
+    <br><hr>
+    <!-- type ="range" : 상태바를 이용하여 범위 값을 나타냄-->
+    <input type="range">10
+    <br><hr> 
+</body>
+</html>

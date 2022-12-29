@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        table 표 만들 때 사용
+        table은 '다른 태그와 조합'해서 만든다
+        tr : 한 행을 의미
+        td/th : 한 열을 의미 (한칸)
+            td : 왼쪽 정렬, 일반 글씨
+            th : 가운데 정렬, 굵은 글씨 (제목, 머리글 등에 사용)
+    -->
+
+    <!-- 
+        3행 4열 테이블 생성 
+        tr 3개 ,td 4개씩 3개 = 12개 필요
+    -->
+    <table border="1" width="300px"> <!-- border 테두리 width 세부적인 꾸미기는 css 에서-->
+        <tr>
+            <th>번호</th>   <!-- 가운데 정렬-->
+            <th>이름</th>
+            <!--
+               <th>국어</th>
+               <th>영어</th>
+            -->
+            <th colspan="2">성적</th>   <!-- 국어 영어 셀 병합하려면-->
+            
+        </tr>
+        <tr>
+            <td>1</td>              <!-- 1번 2번 병합하려면 td 옆에 rowspan"2" 사용-->
+            <td>홍길동</td>          <!-- 왼쪽정렬-->
+            <td>78</td>     
+            <td>89</td>
+        </tr>            
+        <tr>
+            <td>2</td>
+            <td>김영이</td>
+            <td>74</td>
+            <td>96</td>
+        </tr>
+    </table>
+    <br><hr><br>
+    <!-- 3행 4열의 표를 만들어서 1~12까지 값을 채우기-->
+    <table border="1" width="300px">
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+        </tr>
+        <tr>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+        </tr>
+        <tr>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+        </tr>
+    </table>
+    <br><hr><br>
+    <!-- thead, tbody, tfoot  테이블 내에서의 헤드 바디 풋
+        thead > tbody > tfoot 순서로 배치
+        작성 순서와 달리 thead가 가장 앞으로 배치
+    -->
+    <table border="1" width="300px">
+        <caption>숫자판</caption>
+        <thead>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+        </tfoot>
+
+    </table>
+    <br><hr><br>
+    <table border="1" width="500px">
+        <caption>성적표</caption>
+        <thead>
+            <tr>
+                <th>과목</th>
+                <th>이름</th>
+                <th>중간</th>
+                <th>기말</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>국어</td>
+                <td>홍길동</td>
+                <td>90</td>
+                <td>80</td>
+            </tr>       
+            <tr>
+                <td>영어</td>
+                <td>김영이</td>
+                <td>80</td>
+                <td>70</td>
+            </tr>    
+            <tr>
+                <td>수학</td>
+                <td>유관순</td>
+                <td>70</td>
+                <td>60</td>
+            </tr>         
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">평균</td>
+                <td>80</td>
+                <td>70</td>
+            </tr>
+            
+        </tfoot>
+       
+
+    </table>
+</body>
+</html>
