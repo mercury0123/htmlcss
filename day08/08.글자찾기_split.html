@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자 출현 횟수</title>
+</head>
+<body>
+    <h1>
+        주어진 문장에서 입력받은 글자나 단어의 개수를 출력하기
+    </h1>
+    <p id="para">
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+    </p>
+    <hr>
+    <input type="text" id="keyword" placeholder="찾을 단어를 입력하세요">
+    <button type="button" id="btn" onclick="searchWord()">출력</button>
+    <hr>
+    <h3>
+        찾는 Keyword : <span id="key"></span><br>
+        출현개수 : <span id="count"></span>개
+    </h3>
+
+    <script>
+        function printKeywordCount(k,c) {
+            document.getElementById('key').innerText = k;
+            document.getElementById('count').innerText = c;
+            
+        }
+        
+         // 1칸을 제외한 (띄어쓰기) 공백제거
+        // console.log(para1); //para1 값 제대로 들어오는지 확인
+        para1.split(data) //해당 data를 기준으로 나누어서 배열로 저장
+        //string method charAt()=1 글자 반환
+        //단어 indexOf(키워드,index) 키워드의 위치있다면 index 번호 반환, 없다면 -1을 반환
+
+
+        document.getElementById('btn').addEventListener('click',
+        function(){
+            const para = document.getElementById('para').innerText;
+            let para1 =para.trim();
+            let dataLen = para1.length;
+            let keyword = document.getElementById('keyword').value;
+            let count =0;
+            if (keyword.length ==1){    //한글자의 값 찾기 charAt
+                for(let i=0; i<dataLen; i++){
+                    if(para1.charAt(i)==keyword){
+                        count++;
+                    }
+                }
+                
+            } else {        //단어로 찾기 indexOf
+                for(let i=0; i<dataLen; i++){
+                    if(para1.indexOf(keyword,i)>0){ //값이 있다면 그 index, 없다면 -1
+                        count++;
+                        i = para1.indexOf(keyword,i); //해당 찾은 위치부터 index 다시 검색
+                    }
+                }
+            }
+            printKeywordCount(keyword,count);
+        })
+
+        function searchWord() { 
+            let arr =[];            
+            let keyword = document.getElementById('keyword').value;
+            // console.log(keyword);   //찾으려는 입력 단어값 제대로 들어오는지 확인
+
+            arr = Array.from(para1.match(keyword));
+            // console.log(arr);      //찾는 키워드 값 제대로 배열에 들어가는지 확인
+            document.getElementById('key').innerText = keyword;         //키워드 자체 출력
+            document.getElementById('count').innerText = arr.length;    //배열길이가 곧 찾은 단어수
+        }
+    </script>
+
+</body>
+</html>

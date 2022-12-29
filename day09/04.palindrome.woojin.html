@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="inputData">
+        <button type="button" onclick="onClickFunc(inputData.value)">button</button>
+        <!-- 입력받은 단어를 바로 버튼 선언시 onClickFunc 합수안에 입력 -->
+    </form>
+    <h1 id="result"></h1>
+    
+    <script>
+        function onClickFunc(data){
+            var result = document.getElementById("result");
+            result.innerText = palindrome(data, 0, data.length-1);
+        }
+        function palindrome(data, left, right){
+            if(left>=right) return true; 
+            if(data[left] == data[right]) return palindrome(data, left+1, right-1); //여기서 반복이됨
+            //data의 left 인덱스값 vs right 인덱스값 비교 하여 팰린드럼 함수에 리턴
+            return false;   //left != right면 false값 반환
+        }
+    </script>
+</body>
+</html>

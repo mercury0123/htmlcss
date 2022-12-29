@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이름찾기</title>
+</head>
+<body>
+    <h1>
+        input text 에 파일명.확장자를 입력하고, 전송버튼을 클릭하면
+        이미지 파일인지 아닌지 검사하여
+        이미지파일 = 정상파일입니다
+        이미지파일이 아니면 = 이미지 파일만 가능합니다. 라고 출력
+    </h1>
+
+    <form action="" id ="myForm">
+        
+        입력 : <input type="text" id="text" placeholder="파일명.확장자 입력"><br>                   <br>
+        <button type="button" id="sbmBtn">파일 검사!!</button>
+        
+    </form>
+
+    <h3 id="imageSearch"></h3>
+    <script>
+        //입력받은 값이 이미지면 True, 아니면 False
+        //대소문자 상관없음 jpg = JPG
+        //jpg,gif,png,jpeg,bmp
+        //match 함수 사용, True, 아니면 False
+
+        let str="red,yellow,blue";
+        console.log(str.match("red")=="red");   // match 값 true
+
+        // 정규식 : /값/gi => 값이 대소문자인지 불문하고 체크
+        //str.toLowerCase() : 소문자로 str.toUpperCase() : 대문자로 변환
+
+        function imageFile(file){
+        let filename = file.toLowerCase();
+            if(filename.match(/(.jpg|.gif|.png|.jpeg|.bmp)/gi)){
+                return true;
+                alert(" True!! 해당 파일은 이미지 파일입니다."); 
+            } else {
+                return false;
+                alert(" False!! 해당 파일은 이미지 파일이 아닙니다."); 
+            }
+            console.log(file);
+        }
+
+
+
+    </script>
+</body>
+</html>

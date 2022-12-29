@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sort</title>
+</head>
+<body>
+    <h1>
+        배열의 정렬은 문자기반으로 정렬이 됨
+    </h1>
+    <ul>
+        <li>array.sort() : 오름차순(순차) 정렬</li>
+        <li>array.reverse() : 내림차순(역) 정렬</li>
+        <li>정렬할 배열의 원소가 숫자일 경우 콜백함수를 이용하여 내부 연산기법을 활용하여 정렬</li>
+        <li>
+            array.sort(function(a,b){return a-b}) : 숫자 순차정렬 <br> 
+            array.sort(function(a,b){return b-a}) : 숫자 역정렬 <br> 
+        </li>
+        <li>1~45사이의 랜덤숫자를 6개 생성하여 배열에 저장한 후 순차정렬 후 출력</li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script>
+
+        const arrayNum =[];
+
+        for (let i =0 ; i<=5 ; i++) {
+            arrayNum.push(Math.floor(Math.random() * 45) + 1);
+        }
+
+        console.log(arrayNum);
+        arrayNum.sort(function(a,b){return a-b});   
+        //정렬은 문자기준이 되므로 콜백함수 사용. 이거 안쓰면 숫자에 해당하는 아스키 코드로 정렬됨
+        console.log(arrayNum);
+
+        const cars =[
+            {type : "Volvo", year: 2016},
+            {type : "BMW", year: 2020},
+            {type : "AUDI", year: 2018},
+        ];
+
+        cars.sort(function(a,b){return a.year-b.year}); //year 기준으로 정렬
+        console.log(cars);
+
+        cars.sort(function(a,b){                        //type 기준으로 정렬
+            let x = a.type.toLowerCase();
+            let y = b.type.toLowerCase();
+            if(x>y){return 1;}
+            if(x<y){return -1;}
+            return 0;
+        }); 
+        console.log(cars);
+
+        //문자 배열의 정렬은 sort(), reverse()로 간단하게 정렬가능
+        //유사배열의 값을 문자, 숫자 형태로 객체로 저장 > 정렬 
+
+        const myArray = ['c','a','b',2,1,3];
+
+        for (const i of myArray) {
+             console.log(i.toString().charCodeAt())
+        }
+        myArray.sort();
+        console.log(myArray)
+
+    </script>
+</body>
+</html>

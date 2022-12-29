@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열순환</title>
+</head>
+<body>
+    <h1>배열의 순환할 수 잇는 구조를 이용하여 튻정기능을 할수잇는 메소드가 제공됨</h1>
+    <ul>
+        <li>
+            array.forEach(callback function) : 일반 반복문과 유사한 형태로 배열 탐색
+            array.forEach(function(element_value, index, array){
+                code;
+            })
+        </li>
+        <li>map은 연산</li>
+            
+        <li> array.map(callback function) : forEach를 수행하면서 연산결과를 '리턴'하여 '새로운 배열'을 만듦
+        </li>
+        <li>filter는 조건</li>
+        <li>array.filter(callback function) : map 처럼수행 + 비교연산의 결과에서 true 값만 리턴함
+        </li>
+    </ul>
+    <script>
+        const numArr = [12,3,46,31,17,'s','p','g',];    // 유사배열 초기화 및 선언
+        numArr.forEach(function(elem_value, index, self){
+            console.log(index,elem_value,self[index]);      
+        })
+
+        console.log("--------------el,i--------");
+        numArr.forEach(function(elem_value,index){
+            console.log(index,elem_value);
+        })
+        numArr.forEach(function(elem_value){
+            console.log(elem_value);
+        })
+
+        //메소드 명이 같아도 파라미터의 형태를 달리하면 중복으로 사용할 수 있게 만드는 기법
+        //메소드 오버로딩(method overloading)이라 한다
+
+        const strArr =['a','b','c','f','r','s'];
+        //forEach를 이용하여 index와 value 값만을 출력하시오
+
+        strArr.forEach(function(elem_value,index){
+            console.log(index,elem_value);
+        })
+
+        console.log("----------------------");
+        function printNumber(el,i,arr){
+            console.log(i,el);
+        }
+        numArr.forEach(printNumber);
+        console.log("---map() inboke callback function---");
+        function printNumber2(el,i,arr){
+            return `${i} : ${el} : ${arr}`;
+        }
+        
+        const newStrArr = strArr.map(printNumber2); //forEach를 수행하면서 연산결과를 리턴하여 새로운 배열을 만듦
+        console.log(newStrArr);
+
+        const newStrArr2 = strArr.map(function(el,i){
+            return  `${i} : ${el}`;
+        })
+        console.log(newStrArr2);
+
+        //numArr 를 위의 map 형태로 출력
+        
+        const newStrArr3 = numArr.map(function(el,i){
+            return `${i} : ${el}`;
+        });
+        console.log(newStrArr3)
+        console.log("---filter() inboke callback function---");
+
+        //isNaN=number 아닌 값만 출력
+        //!isNan=number인 값만 출력
+        const numNewArr = numArr.filter(function(el,i,arr){
+            return isNaN(el);   //isNaN = number가 아닌 값만 출력
+        });
+        console.log(numNewArr);
+        
+        console.log("---filter사용,numArr 10이상값만 출력");
+        const numNewArr1 =numArr.filter(num => num>10);
+        console.log(numNewArr1);
+
+        numArr.forEach(function(el,i){  //인덱스, 값 출력
+            console.log(i,el);
+        })
+
+        const numNewArr2 =numArr.filter(num => num>10)  //값만 출력
+            .forEach(el=>console.log(el));      
+        
+        
+    </script>
+</body>
+</html>

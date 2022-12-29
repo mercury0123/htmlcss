@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별찍어보기</title>
+</head>
+<body>
+    <h1>
+        높이(양의정수)를 입력받으면 직각삼각형 모양으로 (*)의 탑이 되게 출력
+    </h1>
+    <pre>
+        입력받은 숫자 : 5
+        *
+        **
+        ***
+        ****
+        *****
+    </pre>
+    높이 입력 : <input type="number" id="a" placeholder="입력한 수만큼 별찍기">
+    <button type="button" id="btn" onclick="showResult(a.value)">*별찍기*</button>
+    <pre id="printResult"></pre>
+
+    <script>
+        function showResult(a) {
+            console.log(a);         // 숫자값 a 가 제대로 들어가는지 확인
+            a = parseInt(a);        // value로 string 되므로 숫자로 변환
+            console.log(typeof a);  // 제대로 숫자로 변환되는지 확인
+            
+            if (a>0) {  //양수만 입력받음
+                for (let i=1; i<=a; i++) { // 5 줄 찍기 반복문
+				    for (let j=1; j<=i ; j++) { // 1줄의 별의 갯수 반복할수록 증가
+			    	    document.getElementById('printResult').innerHTML+= '*';
+			        }
+			        document.getElementById('printResult').innerHTML+= `<br>`;
+		        }   
+            } else {
+                alert("양수만 입력해주세요")    //입력값이 음수면 에러메세지 출력
+            }
+        }
+
+        // function printStars(height){
+        //     let i =0;
+        //     while (i< parseInt(height)){
+        //         let stars  = '';
+        //         let j=0;
+        //         while(j<=i){
+        //             stars +='*';
+        //             j++
+        //         }
+        //         stars += `<br>`;
+        //         i++
+        //         document.getElementById('printResult').innerHTML+=stars;
+        // }
+        // document.getElementById('btn').addEventListener('click', 
+        //     function(){
+        //         document.getElementById('printResult').innerHTML=""; //출력라인 초기화
+        //         printStars(document.getElementById('height').value);
+        // })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열만들기</title>
+</head>
+<body>
+    <h1>
+        다음과 같은 규칙의 배열을 만드는 range 함수를 완성하시오       
+    </h1>    
+    <ul>
+        <li>range(1,6,1) => [1,2,3,4,5,6]</li>
+        <li>range(3,10,2) => [3,5,7,9]</li>
+        <li>range(10,-10,-4) => [10,6,2,-2,-6]</li>        
+    </ul>
+    <hr>
+    <h3 id="printResult"></h3>
+    <hr>
+    <input type="number" id="a" placeholder="시작수">
+    <input type="number" id="b" placeholder="끝수">
+    <input type="number" id="c" placeholder="증감수">
+    <button type="button" id="btn" onclick="range(a.value,b.value,c.value)">출력</button>
+    <!-- 여기서 바로 .value 줘도 됨-->
+
+    <script>
+        
+    function range (a,b,c){        
+        
+        console.log(a,b,c); //abc 들어오는지 확인 
+
+        a = parseInt(a);    //abc 숫자로 변환!!
+        b = parseInt(b);
+        c = parseInt(c);
+
+        console.log(typeof a);  // abc 숫자로 변환됐는지 확인
+        console.log(typeof a);
+        console.log(typeof a);
+
+        const arr = [];
+        if (a>b){   
+            for (let i=a; i>b; i+=c) {  //range(10,-10,-4) 의 경우
+                arr.push(i);
+            }
+        } else {
+            for (let i=a; i<b; i+=c) {  //range(1,6,1),range(3,10,2) 의 경우
+                arr.push(i);
+            }
+        }  
+                
+        console.log(arr);       //arr 제대로 들어오는지 확인
+        document.getElementById('printResult').innerText= arr;  //arr값 'h3 버젼'으로 출력
+        
+    }    
+    </script>
+</body>
+</html>

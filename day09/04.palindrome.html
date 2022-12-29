@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팰린드롬</title>
+</head>
+<body>
+    <h1>
+        팰린드롬 : 거꾸로 들어도 같은 단어가되는 단어들
+    </h1>
+    <h3>
+        ex) 기러기, 토마토, 스위스, 별똥별, 우영우, 역삼역, 수박이박수, 가나나가
+    </h3>
+    <ul>
+        <li>단어를입력받아서 팰린드롬 여부를 출력</li>
+        <li>팰린드롬 맞음? 아님?</li>
+    </ul>
+    <hr>
+    <form action="">
+        <input type="text" id="str" placeholder="단어입력!!">
+        <button type="button" onclick="showResult()">체크</button>
+    </form>  
+    <hr>
+    <h3> 팰린드롬에 해당하나요?</h3>
+    <h3 id="printResult"></h3>
+    <script>
+        function showResult(){
+            let word = document.getElementById('str').value;
+            console.log(word);          //입력받은 단어 제대로 들어가는지 확인
+            myArr = Array.from(word);   //입력받은 단어를 배열로 치환
+            console.log(myArr);         //입력받은 단어가 제대로 배열로 들어가는지 확인
+            let print = document.getElementById('printResult');
+
+            for (let i=0; i<=Math.floor(myArr.length/2); i++){ // 문자 배열을 반으로 나누어서
+                if (myArr[i]==myArr[myArr.length-1-i]){        // 각 값이 맞는지 비교하면 팰린드럼 여부 체크 가능!!
+                    print.innerText = "맞음";          //리턴값 반환전에 출력!!
+                    return true;
+                    
+                } else{
+                    print.innerText = "아님";          //리턴값 반환전에 출력!!
+                    return false;
+                }   
+            }                       
+        }        
+    </script>
+</body>
+</html>

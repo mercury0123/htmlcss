@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팰린드롬</title>
+</head>
+<body>
+    <h1>
+        팰린드롬 : 거꾸로 들어도 같은 단어가되는 단어들
+    </h1>
+    <h3>
+        ex) 기러기, 토마토, 스위스, 별똥별, 우영우, 역삼역, 수박이박수, 가나나가
+    </h3>
+    <ul>
+        <li>단어를입력받아서 팰린드롬 여부를 출력</li>
+        <li>팰린드롬 맞음? 아님?</li>
+    </ul>
+    <hr>
+    <input type="text" id="strData" placeholder="단어입력!!">
+    <button type="button" id="btn">체크</button>
+    
+    <hr>
+    <h3> 팰린드롬에 해당하나요?</h3>
+    <h3 id="result"></h3>
+    <script>
+        function isPalindrome(word){
+            let wordLen = Math.floor(word.length/2); 
+            for (let i=0; i<wordLen; i++){
+                if (word.charAt(i) != word.charAt(word.length-1-i)){
+                    return false;
+                } 
+            }
+            return true;
+        }
+
+        document.getElementById('btn').addEventListener('click',function(){
+            let strData = document.getElementById('strData').value;
+            document.getElementById('result').innerText =
+            `${(isPalindrome(strData)) ? '팰린드롬 맞음!!' : '팰님드롬 아님!!'}`;
+        })
+    </script>
+</body>
+</html>

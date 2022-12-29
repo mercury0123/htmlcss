@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>count</title>
+</head>
+<body>
+    <h1>Count 만들기</h1>
+    <h3> + 버튼을 클릭하면 숫자가 1씩 증가하고, - 버튼을 클릭하면 숫자가 1씩 감소하는 count 만들기</h3>
+    <h3 id="printNum">0</h3>
+    <button type="button" id="incre" onclick="increBtn()">+</button>
+    <button type="button" id="decre" onclick="decreBtn()">-</button>
+    <button onclick="resetCounter()">Reset</button>
+
+    <script>
+
+        var count =0;   //count 선언 및 0 초기화!!
+        function increBtn(){    //+버튼 클릭시 count 1씩 증가 함수
+            printCount(++count);    //증가된 count 값을 printCount함수로 보내서 출력
+        }
+
+        function decreBtn(){    //1버튼 클릭시 count 1씩 감소 함수       
+            printCount(--count);    //감소된 count 값을 printCount함수로 보내서 출력
+            if (count < 0 ){       //만약 count 값이 음수로 되면 0으로 count 값 리셋되는 함수호출         
+                resetCounter();     //위 순서대로 코딩하지 않고 if 가 선적용되면 -1 에서 멈추게되니 주의            
+            }
+        }
+
+        function resetCounter() {   //count 값 0으로 리셋하는 함수 생성
+            count = 0;
+            printCount(count);      //0으로 리셋된 값을 printCount 함수로 호출
+        }
+
+        function printCount(prt){   //증감된 count 값을 그대로 출력
+            document.getElementById("printNum").innerHTML = prt;
+        }
+
+    </script>
+
+</body>
+</html>

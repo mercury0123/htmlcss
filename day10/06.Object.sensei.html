@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 순환</title>
+</head>
+<body>
+    <h1>주어진 데이터를 순환하여 원하는 조건에 맞는 정보를 추출</h1>
+    <ol>
+        <li>
+            데이터의 환율 자료에서 통화이름만 가져와 새로운 배열에 출력
+        </li>
+        <li>
+            환율의 각 통화 변화율 중 가장 큰 변화를 보인 객체의 정보 출력
+        </li>
+        <li>
+            금시세의 포인트 정보를 분석하여 전일(yesterday)의 포인트값을 추정하여 출력
+        </li>
+    </ol>
+    <script src="06.exchange.js"></script>
+    <script>
+        //Q1
+        const valueArr=[];
+        keyframe='name';
+        exs.exchanges.forEach((e, i, arr)=>{
+            //e값은 object 
+            valueArr.push(e.name);
+        });
+        console.log(valueArr);
+        
+        //Q1. -1
+        const name = exs.exchanges.map(el=>{
+            return el.name;
+        });
+        console.log(name);
+
+        //Q2.
+        let hi = 0;
+        const bigger = exs.exchanges.filter(el=>{
+            if(Math.abs(el.updown) > hi){
+                hi = Math.abs(el.updown);
+                return true;
+            }
+        })
+        console.log(bigger.pop());
+        
+        //Q2 -2
+        const big = exs.exchanges.map(el=>{
+           return Math.abs(el.updown);
+        }); //updown 값을 절대값으로 배열화
+        let max = Math.max(...big); // 가장 큰 값 추출
+        console.log(max); 
+        // max와 일치하는 정보찾기
+        console.log(exs.exchanges.find(e=> Math.abs(e.updown)==max)); 
+        
+        //함수를 이용하여 찾기
+        function isMax(big){    //updown 값이 == max와 일치하는 값 리턴
+           return Math.abs(big.updown) == max;
+        }
+        console.log(exs.exchanges.find(isMax)); // 객체에서 max 값 찾기
+
+        
+        //Q3.
+        const points = exs.gold.map(el=>{
+            let yes = 0;
+            for(const key in el){
+                if(key == 'point'){
+                    yes = el[key];
+                }
+                if(key=='updown'){
+                    yes -=el[key];
+                }
+            }
+            return yes.toFixed(2);
+        });
+
+        let k = [];
+        const p = exs.gold.map(el=>{  //name 만 추출
+            for(const key in el){
+               if(key == 'name'){
+                k.push(el[key]);
+               }
+            }
+        })
+        console.log(`어제의 국제금시세 : ${points[0]}, 국내금시세 : ${points[1]}`);
+        console.log(`${k[0]} : ${points[0]}, ${k[1]} : ${points[1]}`);
+        console.log(k);
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학관련함수 Math</title>
+</head>
+<body>
+    <h1>수학관련 함수 Math</h1>
+    <h3>
+        Math.random(), Math.round(), Math.ceil(), Math.floor(),
+        Math.abs(), Math.max(), Math.min(), Math.pow()
+    </h3>
+    <button type="button" id="startBtn">random 점수 계산</button>
+    <h3 id="printResult"></h3>
+    <script>
+        //0~1사이의 랜덤수 추출 Math.random()
+        //0~9사이의 랜덤수 추출 Math.random()*10
+        //1~10까지의 랜덤수 추출
+        console.log(Math.floor(Math.random()*50)+51);
+    </script>
+    <script>
+        // 3과목의 점수를 랜덤으로 발생시켜 
+        // 과목 점수, 과목의 합과 평균 출력 
+        // 등급을 switch문으로 작성
+        function makeRandom(){
+            return Math.floor(Math.random()*50)+51;
+        }
+        function print(s1, s2, s3, t, a, g){
+            document.getElementById('printResult').innerText = 
+            `HTML:${s1}, CSS:${s2}, JS:${s3}, SUM:${t}, AVG:${a}, grade:${g} `;
+        }
+        document.getElementById('startBtn').addEventListener('click', function(){
+            let sub1 = makeRandom();
+            let sub2 = makeRandom();
+            let sub3 = makeRandom();
+            let tot = sub1 + sub2 + sub3;
+            let avg = (tot /3).toFixed(2);  //소수 자리수 지정 (반올림)
+            let key = Math.floor(avg/10);
+            let grade = '';
+            switch(key){
+                case 10: case 9: grade='A'; break;
+                case 8 : grade='B'; break;
+                case 7 : grade='C'; break;
+                case 6 : grade='D'; break;
+                default: grade ='F';
+            }
+            print(sub1, sub2, sub3, tot, avg, grade);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지파일찾기</title>  
+
+</head>
+<body>  
+    <h3>이미지 파일 검색</h3>
+    <input type="text" id="inputFileName" placeholder="파일명.확장자 형식으로 작성">
+     
+    <br><br>
+     
+    <button type="button" onClick="confirmFileExtension(inputFileName.value);">파일검사</button>
+    
+    <script>
+
+        function confirmFileExtension(file) {           
+            console.log(file);            
+        
+            // 정규식을 사용히여 jpg, jpeg, png, gif, bmp등 이미지파일의 확장자를 가진것을 추려낸다.
+            var filename = /(.*?)\.(jpg|jpeg|png|gif|bmp)$/;
+        
+            if(file.match(filename)) {        
+                alert("해당 파일은 이미지 파일입니다.");        
+            } else {        
+                alert("해당 파일은 이미지 파일이 아닙니다.");        
+            }        
+        }
+        
+    </script>
+        
+    
+</body>
+</html>

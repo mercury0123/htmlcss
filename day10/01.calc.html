@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+</head>
+<body>
+    <h1>계산기</h1>
+    <!-- 숫자 2개와 연산자를 입력받아 연산의 결과를 출력
+    입력받는 input *2
+    연산자는 button +-*/
+    결과창 h3 에 두 수의 연산결과 출력
+     -->
+    <div class="container">
+    <input type="number" id="num1" placeholder="숫자1 입력"><br>   
+    <input type="number" id="num2"placeholder="숫자2 입력"><br>
+    연산자를 선택해주세요<br>
+    <button type="button" id="+" value="+">+</button> 
+    <button type="button" id="-" value="-">-</button>
+    <button type="button" id="*" value="*">*</button>
+    <button type="button" id="/" value="/">/</button>
+    <hr>
+    <h3>계산결과는 <button type="button" id="=">=</button></h3>    
+    <h3 id="result"></h3>  
+    </div>
+    
+    <script>
+        document.querySelector('.container').addEventListener('click',function(e){
+            //e : 클릭의 값을 변수로 받는 역할
+            let btnVal = e.target.value;
+            console.log(btnVal);    //버튼 클릭값이 제대로 들어가는지 확인
+            let num1 = parseInt(document.getElementById('num1').value);
+            let num2 = parseInt(document.getElementById('num2').value);
+            let result = operation(btnVal);
+
+            document.getElementById('=').addEventListener('click',function(){
+                document.getElementById('result').innerText =result;
+            });
+        });
+        function operation(o){
+            let f = parseInt(document.getElementById('num1').value);
+            let l = parseInt(document.getElementById('num2').value);
+            let result =0;
+
+            switch(o) {
+                
+                case '+': result=f+l; break;
+                case '-': result=f-l; break;
+                case '*': result=f*l; break;
+                case '/': result=f/l; break;
+                default:
+            }
+            
+            return `${f} ${o} ${l} = ${result.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

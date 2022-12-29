@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    2x1=2   3x1=3.....................9x1=9
+    2x2=4
+    .
+    .
+    .
+    2x9=18  3x9=27....................9x9=81 
+    -->
+
+    <h3>전체 구구단 출력</h3>
+    <button type="button" onclick="showResult()">클릭하면 출력!!</button>
+    <div id="gugudan"></div>
+    <script>
+        function showResult() {
+            document.write("for문을 이용한 출력==================", "<br>");
+            document.write('<table border= "0">');
+
+            // header
+            document.write('<thead>');
+            document.write('<tr>');
+            for(let i = 2; i <= 9; i++) {
+                document.write('<th>' + i + '단 </th>');
+            }
+            document.write('</tr>');
+            document.write('</thead>');
+
+            // body
+            document.write('<tbody>');
+            for(let i = 1; i <= 9; i++) {
+                document.write('<tr>');
+                for(let j = 2; j <= 9; j++) {
+                    document.write('<td>' + j + ' * ' + i + ' = ' + (j*i) + '</td>');
+                }
+                document.write('</tr>');
+            }
+            document.write('</tbody>');
+
+            document.write('</table>');
+
+            // // while문 
+            // var num1 = 1;
+            // var num2 = 1;
+
+        
+            // document.write("while문을 이용한 출력==============", "<br>");
+            // while (num1 < 10) {
+            //     num2 = 1;
+            //     while (num2 < 10) {
+            //         document.write(num1 + " * " + num2 + " = " + (num1 * num2) + "<br>");
+            //         num2++;
+            //     }
+            //     document.write("<hr>");
+            //     num1++;
+            // }
+        }        
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이구하기</title>
+    <!-- input을 이용하여 이름, 주민등록번호를 입력받아 -->
+    <!-- 이름, 생년월일, 성별을 출력-->
+</head>
+<body>
+    <form action="" id ="myForm">
+        <fieldset>
+            <legend>나이구하기</legend>
+            이름 : <input type="text" id="name"><br>   
+            주민등록번호 : <input type="text" id="idNum"><br>           
+            <button type="button" id="sbmBtn" onclick="showResult()">출력!!</button>
+        </fieldset>
+    </form>
+    <h3 id="age"></h3>
+    
+    <script>
+
+    //오늘날짜, 시간
+        let now = new Date();
+        console.log(now);
+        let now1 = new Date(2001,10,10,12,00);
+        console.log(now1);            
+        let now2 = new Date('2001-01-01');
+        console.log(now2);
+    
+
+    // getFullYear() : 년도추출
+    // getMonth() : 월 0~11, +1
+    // getDate() : 일
+    // getDay() : 요일
+    // getHours() 
+    // getMinutes()
+    // getSeconds()
+    // getMilliseconds() : 밀리초
+    // getTime() : 시간
+
+    let date = new Date();
+    console.log(date);
+    console.log(date.getFullYear());
+    console.log(date.getMonth()+1);
+    console.log(date.getDate());
+
+    let date1 = date.getFullYear()+'년'+(date.getMonth()+1)+'월'+date.getDate()+'일';
+    console.log(date1);
+
+
+        function showResult(){
+            let name = document.getElementById('name').value;
+            let idNum = document.getElementById('idNum').value; //value 값으로 받으면 다 string 으로 받아짐
+            
+            
+
+
+
+
+            //생년월일구하기
+            let birthYear = idNum.substr(0,2);
+            let birthMonth = idNum.substr(2,2);
+            let birthDay = idNum.substr(4,2);
+
+
+            document.getElementById('age').innerHTML=`이름 : ${name} <br>`;            
+            document.getElementById('age').innerText+= `생년월일 : ${birthYear}년 ${birthMonth}월 ${birthDay}일 `;
+            document.getElementById('age').innerHTML+= `<br> 성별 : `;
+
+            //성별구하기
+            let getNum = idNum.charAt(idNum.indexOf('-')+1);
+
+            if(getNum==1 || getNum==3){
+                document.getElementById('age').innerText+= `남자`;
+            } else {
+                document.getElementById('age').innerText+= `여자`;
+            }
+
+            document.getElementById('age').innerHTML+= `<br>`;
+            const today = new Date();
+            const birthDate = new Date(birthYear,birthMonth,birthDay);
+
+            // if(getNum==1 || getNum==2){
+            //     let birthAge = today.getFullYear()-birthDate.getFullYear()+1;
+            //     document.getElementById('age').innerText+= `나이 : ${birthAge} 세`;
+            // } else{
+            //     let birthAge = today.getFullYear()-birthDate.getFullYear()+1 -100;
+            //     document.getElementById('age').innerText+= `나이 : ${birthAge} 세`;
+            // }
+
+            // 이렇게 줄일 수 있다. 한줄이면 if문 중괄호 생략가능
+            let birthAge = today.getFullYear()-birthDate.getFullYear()+1;
+            if(getNum==3 || getNum==4) birthAge -= 100;
+            document.getElementById('age').innerText+= `나이 : ${birthAge} 세`;
+        }   
+
+
+    </script>        
+    
+</body>
+</html>

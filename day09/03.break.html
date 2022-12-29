@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>break, continue</title>
+</head>
+<body>
+    <h1>
+        break : 특정 조건에서 반복을 중지하고 싶을 때 사용
+        continue : 특정 조건에서 실행을 건너뛰고 싶을 때 사용
+    </h1>
+    <ul>
+        <li>JAVA에서와 같은 형태로 사용 </li>
+        <li>제어문에서 주로 사용되며 반복문을 벗어나고 싶을 때 벗어나고자 하는 조건과 같이 사용</li>
+        <li>continue : 특정 시점에서 조건을 수행한 후 아래 코드를 스킵하고 반복을 지속함</li>
+    </ul>
+    <p id="demo"></p>
+    <script>
+        // // 1~10까지 콘솔에 출력         
+        // let count =0;
+        // while (count <=10){
+        //     if (count ==7){
+        //         console.log('8부터중지');
+        //         break;
+        //     }
+        //     count++;
+        //     console.log(count);
+        // }
+        // // 1~7까지 출력후 8이 되면 중지
+        // let text = "";
+        // for (let i = 1; i <= 10; i++) {
+        //     if (i === 8) { break; }
+        //     text += i + "<br>";
+        // }
+        // document.getElementById("demo").innerHTML = text;
+
+         // 1~10까지 콘솔에 출력  (7만 제외)
+        let count1 =0;
+        while (count1 <10){
+            count1++;
+            if (count1 ==7) continue;
+            console.log(count1);
+        }
+    </script>
+</body>
+</html>

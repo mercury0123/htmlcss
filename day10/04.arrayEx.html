@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 예제</title>
+</head>
+<body>
+    <ul>
+        <li>array.keys() : 배열의 index 추출</li>
+        <li>array.values() : 배열의 값을 추출</li>
+        <li>array.entries() : 새 array객체로 변환</li>
+    </ul>
+    <script>
+        const array1 = ['a','b','c','d','e'];
+        const key = array1.keys();
+        console.log(key);
+        for (const k of key){
+            console.log(k);
+        }
+        
+        console.log('---------------');
+
+        const value = array1.values();
+        for ( const v of value){
+            console.log(v);
+        }
+        console.log('----------entries');
+        const entry = array1.entries();
+        console.log(entry);        
+        console.log(entry.next().value);
+        console.log('---------------');
+        for(const e of entry){
+            console.log(e,e.values);
+        }
+
+        console.log('------------map');
+        //map 을 이용해서 숫자의 *2 한 값을 갖는 배열을 생성
+        const array2 = [1,5,4,7,9];
+        
+        const mul2 = array2.map(x=>x*2)
+        console.log(mul2);
+
+
+        console.log('---------filter');
+        //filter를 이용해서 5이상의 값만 추출   ★★
+        const five = array2.filter(e=>e>=5);
+        console.log(five);
+
+        //다음 배열에서 6글자 이상의 값만 추출  ★★
+        const words = ['spray','limit','apple','banana','destruction','present'];
+        const six = words.filter(l=> l.length>=6);
+        console.log(six);
+
+        console.log('--------forEach'); 
+        //해당 word의 배열 객체를 ★★
+        words.forEach((e,i)=>console.log(i,e));
+
+        console.log('--------------1');
+        let obj = [
+            {name: 'Hong', age: 23},
+            {name: 'Kim', age: 20},
+            {name: 'Lee', age: 25},
+            {name: 'Choi', age: 37},
+        ];
+        
+        obj.forEach(o=> {console.log(o)});  //forEach 출력★★
+        console.log('--------------2');
+        obj.forEach(o=> {                   //forEach 조건식으로 출력
+        console.log('--------------2');
+            if(o.name=='Hong'){
+                console.log(o);
+            }
+        });
+        console.log('--------------3');
+        let find1 = obj.find(e=>e.name=="Kim"); //find 이용 출력★
+        console.log('--------------2');
+        console.log(find1);
+
+        console.log('------findIndex');         //findIndex 이용 인덱스만 출력★
+        let index = obj.findIndex(e=>e.name=='Kim');
+        console.log(index);
+
+        if(index != -1){
+            console.log(obj[index])
+        }
+        console.log('---------filter');
+        let fil = obj.filter(e=>e.name=='Kim');
+        console.log(fil);
+
+        if(fil.lengh>0){
+            console.log(fil[0]);
+        }
+    </script>
+</body>
+</html>

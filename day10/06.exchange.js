@@ -1,0 +1,36 @@
+const exs = {
+    exchanges:[
+        {
+            name:'미국USD',
+            point:1418.50,
+            updown:-8.50
+        },
+        {
+            name:'일본JPY(100엔)',
+            point:958.87,
+            updown:-6.66
+        },
+        {
+            name:'유럽연합EUR',
+            point:1387.29,
+            updown:-10.03
+        },
+        {
+            name:'중국CNY',
+            point:195.33,
+            updown:0.57
+        },
+    ],
+    gold:[
+        {
+            name:'국제금(11.03)',
+            point:1630.90,
+            updown:-19.10
+        },
+        {
+            name:'국내금(11.04)',
+            point:75154.68,
+            updown:845.38
+        },
+    ]
+};

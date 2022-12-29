@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+     <!-- 숫자 2개와 연산자를 입력받아 연산의 결과를 출력
+    입력받는 input *2
+    연산자는 button +-*/
+    결과창 h3 에 두 수의 연산결과 출력
+     -->
+</head>
+<body>
+    <form action="" id ="myForm">
+        <fieldset>
+            <legend>계산기</legend>
+                <input type="number" id="num1" placeholder="숫자1 입력"><br>   
+                <input type="number" id="num2" placeholder="숫자2 입력"><br>
+                연산자를 선택해주세요<br>
+                <button type="button" onclick="cal('+')">+</button> 
+                <button type="button" onclick="cal('-')">-</button>
+                <button type="button" onclick="cal('*')">*</button>
+                <button type="button" onclick="cal('/')">/</button>    
+            
+        </fieldset>
+    </form>
+    <h3>계산결과는? <button type="button" onclick="cal('=')">=</button>    </h3>
+    <h3 id="printResult"></h3>
+
+    <script>    
+        let calc_Result = document.getElementById('printResult');
+        let res=0;
+
+        function cal(oper){
+            let num1 = parseInt(document.getElementById('num1').value);
+            let num2 = parseInt(document.getElementById('num2').value);     
+
+            switch(oper){
+                case '+': res=num1+num2; break;
+                case '-': res=num1-num2; break;
+                case '*': res=num1*num2; break;
+                case '/': res=num1/num2; break;
+                case '=': calc_Result=document.getElementById('printResult').innerHTML=`${num1} ${oper} ${num2} = ${res.toFixed(2)} 입니다!!`; break;
+                default:
+            }                    
+        }        
+        // calc_Result=document.getElementById('printResult').innerHTML=`${num1} ${oper} ${num2} = ${res.toFixed(2)}`;
+    </script>
+</body>
+</html>
