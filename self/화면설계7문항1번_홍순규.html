@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(9, 104, 110);
+        }
+        .container{
+            width: 300px;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: aliceblue;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        input {
+            width: 250px;
+            margin: 5px;
+            padding: 8px;
+            border: 0px;
+            border-radius: 5px;
+        }
+        .login {
+            margin-bottom: 25px;           
+            background-color: rgb(9, 104, 110);
+            cursor: pointer;
+        }
+        a {
+            font-size: 0.4rem;
+        }
+    </style>
+<body>
+    <div class="container">
+        <form>
+            <input type="text" placeholder="아이디"><br>
+            <input type="password" placeholder="비밀번호"><br>
+            <input class="login" type="submit" style="color:white" value="로그인">
+        </form>
+        <a href="" target="_blank">비밀번호를 잊어버리셨나요?</a> 
+    </div>    
+    
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <title>화면구현 8-1</title>
+
+    <style>
+
+      html,
+
+      body {
+
+        margin: 0;
+
+        padding: 0;
+
+        height: 100%;
+
+      }
+
+      .container {
+
+        margin: 0;
+
+        padding: 0;
+
+        display: flex;
+
+        height: 100%;
+
+        color: white;
+
+      }
+
+      /* 네비게이션 */
+
+      .nav {
+
+        background-color: black;
+
+        margin: 0;
+
+        padding: 0;
+
+        width: 30%;
+
+      }
+
+      .nav--title {
+
+        margin-top: 50px;
+
+        text-align: center;
+
+      }
+
+      .nav--li{
+
+        margin-bottom: 30px;
+
+      }
+
+      .nav--ul {
+
+        margin-top: 100px;
+
+        padding-left: 10%;
+
+        list-style-type: none;
+
+      }
+
+      .nav--a {
+
+        text-decoration: none;
+
+        color: white;
+
+      }
+
+      .nav--icons {
+
+        text-align: center;
+
+      }
+
+      .nav--icons-i {
+
+        margin: 100px 20px 0px 20px;
+
+      }
+
+      /* 메인 */
+
+      .main {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        align-items: center;
+
+        background-image: url(http://www.artinsight.co.kr/data/news/2008/3551744270_5cklrqmz_131.jpg);
+
+        background-size: cover;
+
+      }
+
+      .main--title{
+
+        font-size: 40px;
+
+      }
+
+      .main--btn{
+
+        width: 200px;
+
+        height: 50px;
+
+        border: 3px solid white;
+
+        background-color: inherit;
+
+        color: white;
+
+        font-size: 20px;
+
+      }
+
+      .main--btn:hover{
+
+        background-color: rgba(255, 255, 255, 0.2);
+
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- 네비게이션 -->
+
+      <nav class="nav">
+
+        <h2 class="nav--title">Paradise Park</h2>
+
+        <ul class="nav--ul">
+
+          <li class="nav--li"><a class="nav--a" href="#">HOME</a></li>
+
+          <li class="nav--li"><a class="nav--a" href="#">HTML5</a></li>
+
+          <li class="nav--li"><a class="nav--a" href="#">CSS3</a></li>
+
+          <li class="nav--li"><a class="nav--a" href="#">JAVASCRIPT</a></li>
+
+          <li class="nav--li"><a class="nav--a" href="#">BOOTSTRAP 4</a></li>
+
+        </ul>
+
+        <!-- 네비게이션 아이콘 -->
+
+        <div class="nav--icons">
+
+          <i class="fa fa-facebook-f fa-2x nav--icons-i"></i>
+
+          <i class="fa fa-twitter fa-2x nav--icons-i"></i>
+
+        </div>
+
+      </nav>
+
+      <!-- 메인 화면 -->
+
+      <main class="main">
+
+          <h1 class="main--title" >Welcome to Front-End World!</h1>
+
+          <button class="main--btn">Learn More</button>
+
+      </main>
+
+    </div>
+
+  </body>
+
+</html>

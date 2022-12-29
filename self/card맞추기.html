@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드맞추기 게임</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        @font-face{
+            font-family: GamjaFlower-Regular;
+            src: url(/font/Gamja_Flower/GamjaFlower-Regular.ttf)
+        }
+        @font-face{
+            font-family: Dongle;
+            src: url(/font/Dongle/Dongle-Bold.ttf)
+        }
+        body {
+            background-color: rgb(250, 206, 112);
+        }
+        table,td{border: 1px solid brown;}
+        table{border-collapse: collapse; border-spacing:0; margin: 100px auto;}
+        
+        /* .icon{
+            size: 20px;
+            position: absolute;            
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        } */
+        /* .material-symbols-outlined {
+            font-size: 30px;
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48
+        } */
+        .bottom {
+            text-align: center;
+            margin: auto;
+        }
+        h3, #btn, #home{
+            font-family: Dongle;
+            text-align: center;
+            font-size: 2em;
+        }  
+
+    </style>   
+</head>
+<body>
+    <!-- <div class="icon"><span class="material-symbols-outlined">cruelty_free</span></div> -->
+    <table><tr id="board"></tr></table>
+    <div class="bottom">
+        <h3 id="cnt"></h3>      
+        <button type="button" id="btn">다시 시작</button>
+        <button type="button" id="home">닷컴으로 이동</button>
+    </div>
+      
+    <script>
+        
+        document.getElementById('btn').addEventListener('click', () =>{
+            window.location.reload();
+        })
+        document.getElementById('home').addEventListener('click', () =>{
+            window.location= 'https://www.withukor.com/talk';
+        })
+        var model = [
+            "pic00.png", "pic00.png", 
+            "pic01.png", "pic01.png", 
+            "pic02.png", "pic02.png", 
+            "pic03.png", "pic03.png",
+            "pic04.png", "pic04.png", 
+            "pic05.png", "pic05.png", 
+        ];
+        window.addEventListener("load", function(){
+            //모델 섞기
+            for(var a=0; a<10000; a++){
+                var ran = Math.floor(Math.random()*12);  //카드 갯수만큼 곱한다. 
+                var tmp = model[0];
+                model[0] = model[ran];
+                model[ran] = tmp;
+            }
+            //모델을 화면에 뿌린다
+            var board = document.querySelector("#board");
+            for(var b=0; b<model.length; b++){
+                board.innerHTML += "<td><input class='pic' type='image' src='http://malonmiming.dothome.co.kr/wp-content/uploads/2020/02/" + model[b]+ "' value='" + model[b] + "'></td>";
+            }
+            var pic = document.querySelectorAll(".pic");
+
+            //이미지의 투명도가 1초후에 0이 된다.
+            setTimeout(function(){
+                for(var c=0; c<pic.length; c++){
+                    pic[c].style = "opacity:0.01";
+                }
+            }, 1000);
+            var cnt = 0;
+            var count = 0;
+            var success = 0;    // success == model.length/2
+
+            //이미지 클릭에 반응하도록
+            for(var d=0; d<pic.length; d++){
+                var onePic = null;
+                var twoPic = null;
+                pic[d].addEventListener("click", function(){ //하나의 객체에 여러개 이벤트 쓸때 
+                    //console.log(this.value);
+                    this.style ="opacity:1";
+
+                    //첫번째 이미지인지, 두번째 이미지인지 확인
+                    cnt++;
+                    count++;
+                    //console.log(cnt);
+                    //console.log(count);
+                    document.getElementById('cnt').innerHTML = `${cnt} 번 클릭하셨습니다~`;
+
+                    
+                    if(1==count){
+                        //첫번째 데이터 저장
+                        onePic = this;
+                    } else if(2==count){
+                        twoPic = this;
+
+                        //게임 진행
+                        if(onePic.value == twoPic.value){
+                        // success값 1 증가
+                        success++;
+                            if(success == model.length/2){
+                                alert("성공!! 축하합니다!!");
+                                //window.location = './userInfo.html'; 확인 누르면 해당 페이지로 이동
+                            }
+                        // onePic, twoPic의 클릭이벤트 종료
+                        event.stopPropagation();
+                        event.preventDefault();
+                        /* onePic.disabled = true;
+                        twoPic.disabled = true; */
+           
+                        } else{
+                            //오답일 경우 0.3초 뒤에 사진 투명해짐
+                            setTimeout(function(){
+                                onePic.style="opacity:0.01";
+                                twoPic.style="opacity:0.01";
+                            }, 300);           
+                        }
+                        count = 0;
+                    } else{
+                        alert("버그!");
+                    }
+                });
+            }
+        });
+
+        // //마우스 움직임에 따라 좌표 변경
+        // var icon = document.getElementsByClassName("icon").item(0);
+        // document.addEventListener("mousemove",(e)=>{
+        //     console.log(e.clientX);
+        //     console.log(e.clientY);
+        //     const iconX = e.clientX;
+        //     const iconY = e.clientY;
+
+        //     icon.style.left = iconX + 'px';
+        //     icon.style.top = iconY + 'px';
+            
+        // });
+    </script>
+</body>
+</html>
