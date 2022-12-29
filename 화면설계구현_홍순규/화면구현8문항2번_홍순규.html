@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면구현#8-2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+</head>
+    <style>
+       
+        @font-face{
+            font-family: jua;
+            src: url(font/Jua/Jua-Regular.ttf);
+        }
+        @font-face{    
+            font-family: GamjaFlower-Regular;
+            src: url(font/Gamja_Flower/GamjaFlower-Regular.ttf)
+        }
+        *{
+            text-align: center;
+            margin: 0px;
+            padding: 0px; 
+        } 
+        .name h1, h2{
+            color: rgb(71, 88, 40);
+        }
+        .name h1{
+            margin-top: 30px;
+            font-size: 2em;
+        }
+        .name h2 {
+            font-size: 1em;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .main{
+            display: table;
+            max-width: 575px;
+            height: 100%;
+            /* position: relative; 만약 포지션으로 정렬하려면 얘를 relative 기준으로*/ 
+            margin: auto;
+            background-color: bisque;
+            border: 0.5px solid rgb(204, 152, 152);           
+        }
+        .name{
+            font-size: 20px;
+            font-family: jua;           
+        }   
+        .menu {
+            margin-top: 30px;                  
+        } 
+        .box{
+           width: 80%;
+           overflow: hidden; 
+           text-align: center;
+           margin: auto;
+           border-radius: 15px;
+           
+        }
+        .thumb img{
+            border-radius: 15px;
+            margin-bottom: 30px;
+            /* box-shadow: 5px 5px 5px gray;
+            
+            box-sizing: content-box;
+            border-radius: 15px; */ 
+        }
+        .thumb img:hover{
+            transform: scale(1.2);
+            transition: 0.5s linear;
+            opacity: 0.8;
+        }
+        a{
+            text-decoration: none; 
+        }
+        .text{
+            background-color: white;
+        }
+        .title{
+            color: rgb(71, 88, 40);
+            font-family: jua;
+            font-size: 22px;            
+        }
+        .pdesc{
+            color: rgb(71, 88, 40);
+            font-family: GamjaFlower-Regular;
+            font-size: 22px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .pay{
+            color: blue;
+            font-family: jua;
+            font-size: 19px;
+        }
+        .blank{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+<body>
+    
+    <div class="main">
+        <div class="name"><h1>코딩의 민족</h1><h2>넌 코딩할 때가 제일 이뻐</h2></div>
+        
+        
+            <div class="menu">
+                <!-- 스시박스 -->
+                <div class="box">
+                    <span class="thumb"><img src="img/스시(1).jpg" alt="스시"></span>   
+                </div>
+                <div class="text">
+                    <div class="title"><strong>맛있는 초밥</strong></div>
+                    <div class="desc">
+                        <p class="pdesc">마음까지 맛있어지는 착한 초밥</p>
+                    </div>                
+                    <div class="pay">         
+                        <a href="https://www.baemin.com" class="link" target="_blank">                    
+                            바!로!결!제! </a>
+                    </div>
+                    
+                </div>
+                <div class="blank"></div>
+            </div>           
+            <div class="menu">
+                <!-- 치킨박스 -->
+                <div class="box">
+                    <span class="thumb"><img src="img/치킨(1).jpg" alt="치킨"></span>   
+                </div>
+                <div class="text">
+                    <div class="title"><strong>불금엔 치킨</strong></div>
+                    <div class="desc">
+                        <p class="pdesc">불타오르는 화끈한 치킨</p>
+                    </div>                            
+                    <div class="pay">         
+                        <a href="https://www.baemin.com" class="link" target="_blank">                    
+                            바!로!결!제! </a>
+                    </div>
+                </div>
+            
+            <div class="menu">
+                <!-- 비빔밥박스 -->
+                <div class="box">
+                    <span class="thumb"><img src="img/비빔밥(1).jpg" alt="비빔밥"></span>   
+                </div>
+                <div class="text">
+                    <div class="title"><strong>두유 노우 비빔밥?!</strong></div>
+                    <div class="desc">
+                        <p class="pdesc">국뽕이 차오르는 맛있는 비빔밥</p>                    
+                    </div>               
+                    <div class="pay">         
+                        <a href="https://www.baemin.com" class="link" target="_blank">                    
+                            바!로!결!제! </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu">
+                <!-- 짬뽕박스 -->
+                <div class="box">
+                    <span class="thumb"><img src="img/짬뽕(1).jpg" alt="짬뽕"></span>   
+                </div>      
+
+                <div class="text">
+                    <div class="title"><strong>남자는 짬뽕</strong></div>
+                    <div class="desc">
+                        <p class="pdesc">사나이를 세번 울리는 짬뽕</p>                    
+                    </div>   
+                    <div class="pay">         
+                    <a href="https://www.baemin.com" class="link" target="_blank">                    
+                        바!로!결!제! </a>
+                    </div>
+                
+                </div>
+            </div>
+            
+        
+    </div>
+</body>
+</html>
