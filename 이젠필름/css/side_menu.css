@@ -1,0 +1,82 @@
+:root{
+    --color1: #181313;
+    --color2: #391A1A;
+    --color3: #621313;
+    --white: #F2F2F2;
+}
+
+#side_menu{
+    position: absolute;
+    top: 0;
+    left: -300px;
+    z-index: 1;
+    width: 300px;
+    background: var(--color2);
+    padding-top: 100px;
+    height: 100vh;
+    transition: all 0.3s linear;
+}
+#side_menu.active{
+    transform: translateX(100%);
+}
+#side_menu > div{
+    border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+}
+#side_menu > div > a{
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s linear;
+}
+#side_menu > div > a:hover{
+    background: rgba(255, 255, 255, 0.1);
+}
+#side_menu ion-icon{
+    font-size: 30px;
+}
+#side_menu .category_title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+/* 장르 */
+#side_menu > div.category{
+    padding-bottom: 20px;
+}
+#side_menu > div > div{
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    /* background-color: rgba(255, 255, 255, 0.1); */
+}
+#side_menu ul{}
+#side_menu ul li{}
+#side_menu ul li a{
+    padding-left: 60px;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 40px;
+    transition: all 0.3s linear;
+}
+#side_menu ul li a:hover{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* 위로 가는 버튼 */
+#to_top_btn{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+#to_top_btn ion-icon{
+    font-size: 50px;
+    transition: all 0.3s linear;
+}
+#to_top_btn:hover ion-icon{
+    color: var(--color3);
+}
