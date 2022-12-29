@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sale</title>
+</head>
+<body>
+    <!-- 가격, 할인율, 할인가격 계산하기 버튼을 클릭하면 
+    원래가격 , 할인율, 할인된 금액, 지불금액을 출력하는 이벤트 function 작성 -->
+    
+    <form action="" id ="myForm">
+        <fieldset style="width: 280px;">
+            <legend>세일간드아~</legend>
+            가격 : <input type="text" id="cost">원<br>   
+            할인율 : <input type="text" id="per">%<br>
+            <button type="button" id="sbmBtn" onclick="clickEvent()">할인가격 계산하기</button>
+        </fieldset>
+    </form>
+    <h3 id="result">세일</h3>
+    <script>
+        function clickEvent(){
+            let cost = document.getElementById('cost').value;
+            let per = document.getElementById('per').value;
+            
+            let result = 0;
+            let mul = 0;
+            cost = parseInt(cost);
+            per = parseInt(per);
+            
+            mul = cost * per *0.01;
+            result = cost - mul;
+            document.getElementById('result').innerText=
+            `원가격은 : ${cost}, 할인율은 : ${per}, 할인된 금액은 : ${mul}, 지불금액은 : ${result}`;
+        }       
+    </script>
+
+</body>
+</html>

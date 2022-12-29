@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table 속성</title>
+</head>
+    <style>
+        table,th,td {
+            border: 1px solid black;
+            border-collapse: collapse;    /* 두줄에서 한줄로*/        
+        }
+        th,td{
+            width: 100px;
+            height: 30px;
+            text-align: center;
+        }
+        thead {
+            background-color: blue;
+        }
+        tfoot{
+            background-color: rgb(255, 176, 29);
+        }
+        
+        tbody>tr:nth-of-type(2n){
+            background-color: rgb(182, 255, 255);
+        }
+    </style>
+<body>
+    <table>
+        <caption>성적표</caption>
+        <thead>
+            <tr>
+                <td class="head">이름</td>
+                <td class="head">국어</td>
+                <td class="head">영어</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="dblue">홍길동</td>
+                <td class="dblue">100</td>
+                <td class="dblue">100</td>
+            </tr>
+            <tr>
+                <td>임꺽정</td>
+                <td>100</td>
+                <td>100</td>   
+            </tr>
+            <tr>
+                <td>이순신</td>
+                <td>100</td>
+                <td>100</td>   
+            </tr>
+            <tr>
+                <td>유관순</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>김영이</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>합계</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+    
+</body>
+</html>

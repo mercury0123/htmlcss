@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+</head>
+<body>
+    <h1>객체 : 식별할 수 있는 것을 상세 특징으로 표현하려한 형식(코드 타입)</h1>
+    <ul>
+        <li>const로 선언하는 것이 일반적 : 객체의 지속성을 확보하기 위함</li>
+        <li>{} 안에다가 속성명 : 속성값, 속성명 : 속성값, 으로 여러개 표현 가능</li>
+        <li>속성명은 같은 객체 내에서는 중복X (구분x므로)</li>
+        <li>객체 내부의 속성값으로 사용할 수 있는 데이터 타입은 제한이 없다</li>
+        <li>객체 속성값으로 익명함수를 정의하면 메소드라고 부른다. 이 경우 메소드 명은 속성명이 된다.</li>
+    </ul>
+    <script>
+        const car = {name : 'myCar', year : 2020}; 
+        //재선언x , 재설정 x 는 const 성질 (선언한 객체값 지속성 o), pi=3.14 같은 경우에 유용
+        let myCar = {name : 'myCar', year : 2020};
+        myCar = 100; // let 이므로 재선언가능. but 기존 myCar객체는 사라짐.
+    </script>
+    <script>
+        const me ={
+            name : 'Kang Min Ju',
+            age : '25',
+            addr : 'Mokpo',
+            hobby : 'game',
+            favor : 'shrimp',
+            subject : {
+                year : 2020, 
+                title : 'javascript', 
+                ver : 'es6', 
+                project : "JAVA", 
+                intro : function(){
+                        console.log(`${me.subject.title}:${me.subject.ver} = ${me.subject.project}`);
+                        return `re:${this.title}:${this.ver}=${this.project}` ;
+                },
+            },
+            year : 2022
+        
+        };
+        console.log(me.name);
+        console.log(me.age);
+        console.log(me.addr);
+        console.log(me.hobby);
+        console.log(me.favor);
+        console.log(me.subject.title);        
+        console.log(me.subject.intro);  //함수실행이 아닌 지목
+        console.log(me.subject.intro()); 
+
+
+    </script>
+    <script>
+        const musician ={
+            //내가 좋아하는 가수의 객체 (이름, 나이, 플레이리스트(3가지곡) 등)
+            name : 'NiziU',
+            age : '18',
+            playList : {
+                list1 : 'Make you Happy',
+                list2 : 'Take a Picture',
+                list3 : 'Clap Clap'
+            }
+            , 
+            jukebox : function(list1,list2,list3) {
+                console.log(`이름 : ${musician.name}, 나이:${musician.age}`);
+                console.log(`${this.playList.list1}, ${this.playList.list2},${this.playList.list3}`);
+                return `${list1} , ${list2} , ${list3}`;
+                }
+            
+        };
+        console.log(musician.playList); 
+        let play = musician.jukebox('너랑나','좋은날','밤편지');
+        console.log(play);
+        console.log(typeof play);
+        let key = "age";
+        console.log(me[key]);
+        console.log(me[key],me.subject['intro']());
+        console.log(musician[key]);
+    </script>
+</body>
+</html>

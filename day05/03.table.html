@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03반응형예제2(레이아웃)</title>
+
+    <style>
+    @font-face{
+        font-family: NanumPenScript-Regular;
+        src: url(/font/Nanum_Pen_Script/NanumPenScript-Regular.ttf);
+    }
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: NanumPenScript-Regular;
+        }
+
+        .header{
+            height: 60px;
+            background-color: aquamarine;
+        }
+        .main-img{
+                
+            height: 300px;
+                  
+            background-color: aqua;
+        }   
+        .desc{
+            height: 300px;                
+            background-color: bisque;
+            font-size: 1.5em;
+            font-weight: 700;
+            text-align: center;
+        }
+        .sub-img1{               
+            height: 350px;
+            background-color: blue;
+            color: white;
+        }
+        .sub-img2{
+            height: 200px;
+            background-color: blueviolet;
+            color: white;
+        }
+        .sub-img3{
+            height: 200px;
+            background-color: brown;
+            color: white;
+        }
+
+        /* 모바일 */
+        @media screen and (min-width: 768px) {
+
+            .header{
+                height: 60px;
+                background-color: aquamarine;
+            }
+            .main-img{
+                
+             height: 300px;
+               
+                background-color: aqua;
+            }   
+            .desc{
+                height: 300px;                
+                background-color: bisque;
+                text-align: center;
+                text-shadow: 1px 1px 1px gray
+            }
+            .sub-img1{         
+                width: 50%;
+                height: 400px;
+                float: left;
+                background-color: blue;
+            }
+            .sub-img2{
+                width: 50%;
+                height: 200px;
+                float: right;
+                background-color: blueviolet;
+            }
+            .sub-img3{
+                width: 50%;
+                height: 200px;
+                float: right;
+                background-color: brown;
+            }
+        }
+
+        /* 데스크탑 */ 
+        @media screen and (min-width: 960px) {
+            
+            .header{
+                height: 60px;
+                background-color: aquamarine;
+            }
+            .main-img{
+                width: 50%;
+                height: 600px;
+                float: left;
+                background-color: aqua;
+            }   
+            .desc{
+                height: 300px;                
+                background-color: bisque;
+                text-align: center;
+            }
+            .sub-img1{        
+                width: 25%;       
+                height: 300px;
+                background-color: blue;
+            }
+            .sub-img2{
+                width: 25%;
+                height: 150px;
+                float: right;
+                background-color: blueviolet;
+            }
+            .sub-img3{
+                width: 25%;
+                height: 150px;
+                float: right;
+                background-color: brown;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">IN'o</div>
+    <div class="main-img">main-img</div>
+    <div class="desc">
+        <div>
+            <h1>Portfolio</h1>
+            <h2>Make Hardware Soft</h2>
+            <p>The standard chunk of Lorem Ipsum used since the 1500s
+            is reproduced below for those interested.
+            Sections 1.10.32 and 1.10.33 from "de Finibus BOnorum et Malorum"
+            by Cicero are also</p>
+           
+            
+        </div>
+    </div>
+    <div class="sub-img1">sub-img1</div>
+    <div class="sub-img2">sub-img2</div>
+    <div class="sub-img3">sub-img3</div>
+</body>
+</html>

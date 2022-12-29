@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <!-- 부모 박스의 크기는 500 500 그안에 자식박스 2개-->
+    <style>
+        .p-box{
+            border: 5px solid black;
+            width: 600px;
+            height: 250px;            
+        }
+        .box{    
+            width: calc(100% / 3);        
+            /* width: 200px; */
+            height: 100%;
+            background-color: burlywood;               
+            float: left;
+            background-image: url(/img/도저히못해먹겠어.gif);
+            background-size: 100px 100px;
+            background-repeat: no-repeat;
+            background-position : center;
+        }
+        .box:nth-child(2) {
+            width: calc(100% / 3);
+            /* width: 200px; */
+            height: 100%;
+            background-color: blue;               
+            float: left;
+        }
+        .box:last-child {
+            background-color: hotpink;
+        }
+       
+        /* 아래처럼 해도 같은 결론 (2분할) (3분할의 경우 box3 추가) */
+        /* .box1{
+            width: 50%;
+            height: 100%;
+            background-color: burlywood;  
+            float: left;
+        }
+        .box2{
+            width: 50%;
+            height: 100%;
+            background-color: hotpink;  
+            float: left;
+        } */
+    </style>
+<body>
+    <div class="p-box">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+</body>
+</html>

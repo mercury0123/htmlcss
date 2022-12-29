@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        opacity : 투명도
+        0~1 사이의 값을 가짐
+        0 투명 1 불투명
+        자식요소는 부모의 opacity를 따라감
+
+        day02 포지션 디스플레이 margin padding 속성 강의 복습 필수
+    -->
+</head>
+    <style>
+        .box{
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid black;
+            opacity: 0.2;                   /*조상박스에 opacity 넣으니 자식박스도 따라감*/
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+<body>
+    <div>안녕하세요!</div>
+    <div class="box">
+        <div class="box2"></div>
+    </div>
+</body>
+</html>

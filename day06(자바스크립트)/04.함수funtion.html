@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수function</title>
+
+    <!--외부파일script.js호출-->
+    <script src="script.js"></script>
+
+    <script>
+        outerFunc();    //외부파일 outerFunc 함수 출력
+        function mySecondFunc(){        // head에서 함수선언도 가능. 역시 호출해줘야 실행됨
+            console.log('두번째 함수');
+            console.log('head에서 작성');
+            console.log(`html 파일이 로드되면서 함수가 선언됨`);
+            console.log(`head태그에 선언된 함수들은 초기ㅓㄹ정 및 선언식 위주의 형태가 일반적`);
+        }
+        mySecondFunc(); // 두번째 함수 실행문
+    </script>
+</head>
+<body>
+    <h1>함수(function) : 특정 기능을 수행하기 위한 코드 - 호출되어야만 작동</h1>
+    <ul>
+        <li>일반적으로 function 이라는 키워드를 사용하여 선언</li>
+        <li>function 함수명 : 함수명은 기능을 함축설명하는 의미로 작성</li>
+        <li>함수명 뒤에 () 를 작성한 후,  (선택적으로) 파라미터로 사용할 변수를 선언할 수 있다</li>
+        <li>() {} 함수의 영역을 지정한 후 그안에 기능 로직을 작성</li>
+        <li>return 이라는 키워들르 사용하여 함수의 종료시점을 지정할 수 있음</li>
+        <li>return은 종료역할 + 특정값을 반환하는 역할</li>
+        <li>파라미터에 갯수 제한은 없으나, 많으면 관리하기 힘드므로 별도의 문법을 적용한다</li>
+        <li>파라미터의 순서, 개수는 매우 중요하다</li>
+
+    </ul>
+    <script>
+        //함수 선언 : 이것만으로는 console에 출력 x
+        function myFirstFunc(){
+            console.log('처음으로 만들어본 함수');
+            console.log('신기신기');
+        }
+        //함수 호출
+        myFirstFunc();
+        myFirstFunc(); //같은 코드를 편리하게 함수 재사용가능
+    </script>
+    <script>
+        let hers = '이재영';
+        function callHerName(herName){
+            let hisName = '홍길동';
+            console.log(`그대의 이름은 : ${herName}`);
+            console.log(`그대의 다른 이름은 : ${hers}`);
+        }
+        callHerName('은솔이');      //직접 값을 입력
+        callHerName(hers);          //변수를 사용(함수외부에서 선언한 변수)
+        //callHerName(hisName);       //변수를 사용(함수내부에서 선언한 변수) => 이건 안됨
+
+        //이름 좋아하는 것을 파라미터로 입력받아 출력
+        //name, favor 값을 받아, 00은 11을 좋아합니다 출력
+
+        function suki(name,favor){
+            console.log(`${name}은 ${favor}를 좋아합니다`);
+        }
+        suki('민주','호텔');
+
+        function whatHisLike(name1,favor1) {
+            let hisName = name1 +'님';
+            let like = favor1+'를(을)';
+            console.log(`${hisName}은 ${like} 좋아합니다`);           
+        }
+        whatHisLike('홍길동','홍차');
+
+        //기존함수 불러와서 사용가능
+        function iKnow(herName, favor){
+            callHerName(herName);
+            whatHisLike(herName,favor);
+            console.log('iKnow');
+        }
+        iKnow('홍길순','커피'); 
+    </script>
+
+</body>
+</html>

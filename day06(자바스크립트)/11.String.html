@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+<body>
+    <h1>가장 많이 사용하는 데이터 타입을 다루는 메소드</h1>
+    <ul>
+        <li>문자열 타입은 index(0부터 시작) 번호를 가지고 있다</li>
+        <li>문자열 데이터 값 내에서 개행을 하는 것은 추천하는 방법이 아님</li>
+        <li>length 프로퍼티를 이용하면 문자값의 총길이, 마지막 문자 번호는 length-1</li>
+        <li>문자열 추출 : slice(), substring(), substr()</li>
+        <li>replace(old문자,new문자) : 첫번째 매칭되는 문자만, 대소문자 구분</li>
+        <li>padStart(목표문자길이,채울문자): 앞쪽에 채우기</li>
+        <li>padEnd(목표문자길이,채울문자): 뒤쪽에 채우기</li>
+        <li>charAt(index) : 해당 위치의 문자만 추출</li>
+        <li>indexOf("str"), lastIndexOf("str") : 지정 문자열의 index리턴</li>
+        <li>
+            startWith(), endWith() : 지정문자열이 탐색대상 문자열에서 시작과 끝에 존재하는 지 여부를 체크
+            return 값 true false 형식으로 반환
+        </li>
+    </ul>
+    <p id="print"></p>
+    <script>
+        let str = "Apple, Banana, Kiwi";
+        //slice로 출력
+        console.log(str.slice(0,5));
+        console.log(str.slice(7,13));
+        console.log(str.slice(-4)); //끝에서부터 4개
+        //substring 으로 출력
+        console.log(str.substring(0,str.indexOf(',')));
+        console.log(str.substring(str.indexOf(',')+2,str.lastIndexOf(',')));
+        console.log(str.substring(str.lastIndexOf(',')+2,));
+        
+        document.getElementById('print').innerText=`${str.substring(0,str.indexOf(','))}`;
+
+        //replace 메소드
+        let text = "Please visit MicroSoft";
+        let newText = text.replace(/MicroSoft/i, "w3schools"); // /text /i : 대소문자 구분x
+        console.log(newText);
+        text = "Please visit MicroSoft and MicroSoft and MicroSoft";
+        newText = text.replace(/MicroSoft/g, "w3schools");  //g : 문자열 전체에 적용
+        console.log(newText);
+
+        //주민등록번호를 -를 포함하는 텍스트를 준비하고
+        //생년월일-성별코드1자리 뒷쪽으로 *로 대체하여 출력
+        //881212-1234567 >> 881212-1*****
+        //padEnd이용 만들기
+        let idNum = "881212-1234567";
+        let newidNum = str.substring(str.lastIndexOf('-'),)
+        console.log(newidNum);
+        console.log(idNum.substr(0,8).padEnd(idNum.length,"*"));
+
+
+        // replace 이용 만들기
+        let str1 = "98765432 - 1234567";
+        console.log(str1.substring(0, str1.indexOf("-")+3).padEnd(str1.length, '*'));
+
+        let str2 = str1.substring(str1.indexOf("-")+3);
+        console.log(str1.replace(str2, "".padEnd(str2.length, "*")));
+
+        //idNUm의 성별을 콘솔에 출력
+        let getNum = idNum.charAt(idNum.indexOf('-')+1);
+
+        if(getNum==1){
+            console.log('남자');
+        } else {
+            console.log('여자');
+        }
+
+        console.log(idNum.charAt(idNum.indexOf('-')+1) ==1 ? '남자' : '여자');
+
+
+    </script>
+</body>
+</html>

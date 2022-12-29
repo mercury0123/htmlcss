@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display-table</title>
+</head>
+    <style>
+        /*p태그는 기본적으로 여백을 가지고 있으므로 *로 모든 태그 여백 0 로 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* display를 테이블 형식으로*/
+        .boxwrap{   
+            display: table;    
+            width: 100%;
+            /*background-image: url("/img/naver.jpg");*/
+            /* background-color: antiquewhite;  */
+            table-layout: fixed; /* 테이블 레이아웃 고정*/
+        }
+        /* box 안에 물품 박스를 셀형식으로*/
+        .boxwrap .box{
+            /* 부모 속성(table) 안에 들어가는 셀*/
+            display: table-cell;
+            vertical-align: middle; 
+            text-align: center;
+            padding: 10px;
+        }
+        .thumb img{
+            width: 40%;
+        }
+        .thumb img:hover {
+            transform: scale(1.2);
+            transition: 0.3s linear;
+        }
+        .title_item {
+            display: block;
+            font-size: 1em;
+        }
+        .desc_item{
+            font-size: 0.7em;
+        }
+        .price{
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+        .title_item, .desc_item{
+            margin-top: 10px;
+        }        
+        .box .link {
+            text-decoration: none;  /* 상품명, 설명, 가격등의 밑줄제거*/
+            color: black;
+        }
+        .box .link:hover {
+            text-decoration: underline;     /* 이미지 박스, 링크에 호버링시 밑줄*/
+        }
+    </style>
+<body>          
+    <!-- 물품나온 이미지 박스와 물품 제목 모두에 링크가 걸리게 할것이므로 a 태그 먼저-->
+    <!-- 물품 이미지 사이즈 미리 맞춰둘것-->
+    <div class="boxwrap"> 
+        <!-- 첫 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb"><img src="/img/신발.jpg" alt="신발"></span>
+                <strong class="title_item">여름 신발</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">여름에 시원한 신발</p>
+                <p class="price">20,000원</p>
+            </a>
+        </div>
+        <!-- 두번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/가디건.jpg" alt="가디건">
+                </span>
+                <strong class="title_item">가디건</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">가을 포근한 가디건</p>
+                <p class="price">30,000원</p>
+            </a>
+        </div>
+        <!-- 3번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/냥.jpg" alt="냥">
+                </span>
+                <strong class="title_item">가을 냥</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">가을에 귀여운 냥</p>
+                <p class="price">???원</p>
+            </a>
+        </div>
+        <!-- 4번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/벨트.jpg" alt="벨트">
+                </span>
+                <strong class="title_item">남성 벨트</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">모던한 벨트</p>
+                <p class="price">10,000원</p>
+            </a>
+        </div>        
+    </div> 
+    
+</body>
+</html>

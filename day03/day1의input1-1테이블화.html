@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입table</title> <!-- 탭 상단에 적힐 문구-->
+
+    <style>
+        input[type=text]{       /*문구입력시 글자 파란색*/
+            color: blue;
+        }
+        input:focus{            /*커서 가져가면 라인 빨간색*/
+            outline-color: red;
+        }
+        input {
+            
+        }
+    </style>
+</head>
+<body>
+    <p><h1>회원가입</h1></p>
+    <input type="image" width="10%"
+    src="https://lh3.googleusercontent.com/pw/AL9nZEXlU01w09ExOliVTdMG3aYuOZvbtfXlPyi9L-25yq5uioLYUYNLc78YlnZPHVMBCGuoi24JqKtec-FJ7ZRRKm9RmsJh1M9Y-C-YSW8V5rJLwgchaVw0Ne-wAmyZNUWLcR8dGG4pGQwlkwwfMtFMU2E7Jw=w400-h345-no?authuser=1" 
+    alt="엑박">
+    <br>
+    <form action="">
+        아이디 : <input type="text" placeholder="ID"><br>
+        비밀번호 : <input type="password" placeholder="PassWord"> <br>
+        비밀번호 확인 : <input type="password" placeholder="PassWord2"> <br>
+        이메일 : <input type="email" name="email"> <br>
+        <label for="man">
+            성별 : <input type="radio" name="gender" id="man" value="man">남자
+        </label>
+        <label for="woman">
+            <input type="radio" name="gender" id="woman"value="woman">여자<br>
+        </label>
+        전화번호 : <input type="number" name="num1">
+    - <input type="number" name="num2">
+    - <input type="number" name="num3">    
+    <br>
+    <input type="submit" value="회원가입">
+    </form>
+    
+    
+</body>
+</html>

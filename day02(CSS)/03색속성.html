@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>색속성</title>
+    <!-- 
+        색상 관련 속성
+        - color : 글자색
+        - background-color : 배경색
+        - border-color : 테두리색
+
+        색상 지정 방법
+        - 이미 지정된 이름을 사용하는 방법 : red blue green
+        - 색상 코드를 사용하는 방법 : #ff0000
+        - rgb 코드 사용하는 방법 : rgb(255,0,0)
+        - rgba 코드 사용하는 방법 : rgba(255,0,0,0.5)
+            a : 투명도 값을 추가 0~1
+    -->
+    <!-- 헤드 안에서 스타일 변경-->
+    <style>
+        /* 전체 div 태그에 font-size : 20px, font-weight : 700 */
+        div {
+            font-size: 20px;            
+        }
+        .color {
+            color : aquamarine;
+        }
+        .bgcolor {
+            background-color: aquamarine;
+        }
+        .bordercolor {
+            border-style: dashed;
+            border-color: aquamarine;
+        }
+        /* bordercolor 클래스에 마우스를 올리면 배경색이 yellow가 되도록 설정 : hover*/
+        .bordercolor:hover {
+            background-color: yellow;
+        } 
+        p {
+            font-size: 20px;
+            color: red;
+        }
+        p:nth-child(1), p:nth-child(3) {
+            color: blue;
+        }
+        .red {
+            color:black;
+        }
+        .p2 {
+            font-size: 30px;
+            color: blueviolet;
+        }
+        .color, .bordercolor {
+            font-weight: 1000;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- p태그 3개 생성, font-size : 20px, 글자색상변경-->
+    <!-- 1,3p태그 만 글자색상을 다른 색상으로 변경 -->
+    <p>안녕하세요</p>
+    <p>곤니치와</p>
+    <p>굿모닝</p>
+    <hr>
+    <p class="red"> 요브로 </p>
+    <p class="p2"> yo bro</p>
+    <p class="red">yap</p>
+    <hr>
+    <div class="color">글자색 변경</div>
+    <div class="bgcolor">배경색 변경</div>
+    <div class="bordercolor">테두리색 변경</div>
+</body>
+</html>

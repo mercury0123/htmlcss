@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleShop</title>
+    <!--sns 연결-->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    /> -->
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*font-face 를 각각 지정해줘야 들어감*/
+        @font-face{
+            font-family: jua;
+            src: url(/font/Jua/Jua-Regular.ttf);             
+        }    
+        @font-face{
+            font-family: NanumPenScript-Regular;
+            src: url(/font/Nanum_Pen_Script/NanumPenScript-Regular.ttf);
+        }
+        @font-face{
+            font-family: IslandMoments-Regular;
+            src: url(/font/Island_Moments/Island_Moments.ttf);
+        }
+        /* a 태그 자동으로 밑줄들어가는 거 방지*/
+        a{
+            text-decoration: none;
+        }
+        .main-image{
+            margin: auto;
+            text-align: center;
+            margin-bottom: 10px;
+            font-family: IslandMoments-Regular;
+            letter-spacing: 5px;
+            word-spacing: 10px;
+            font-size: 2em;
+            color: gray;
+            text-shadow: 1px 1px 1px black
+        }
+        .navbar {
+            height: 100px;            
+        }
+        .navbar>ul{
+            float: right;
+        }
+        /*list 기본적으로 동그라미 생기는데 list style none 으로 없애줌*/
+        .navbar>ul>li{
+         list-style: none;
+         letter-spacing: 5px;
+         word-spacing: 10px;
+        }
+          
+        .boxwrap{   
+            display: table;    
+            width: 100%;            
+            table-layout: fixed; /* 테이블 레이아웃 고정*/
+            background-color: antiquewhite;
+        }
+
+        /* box 안에 물품 박스를 셀형식으로*/
+        .boxwrap .box{
+            /* 부모 속성(table) 안에 들어가는 셀*/
+            display: table-cell;
+            vertical-align: middle; 
+            text-align: center;
+            padding: 10px;
+        }
+        .thumb{
+            display: block;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            margin: auto;
+        }
+        .thumb img{
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s linear;
+        }
+        
+        .thumb2 img{
+            width: 2%;
+        }
+        .title_item {
+            display: block;
+            font-family: jua;
+            font-size: 1.5em;
+        }
+        .desc_item{
+            font-size: 1.5em;
+            font-family: NanumPenScript-Regular;
+        }
+        .price{
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+        .title_item, .desc_item{
+            
+            margin-top: 10px;
+        }
+        .box a:hover img{
+            transform: scale(1.2);
+
+        }
+        .box .link {
+            text-decoration: none;  /* 상품명, 설명, 가격등의 밑줄제거*/
+            color: black;
+        }
+        .box .link:hover {
+            text-decoration: underline;     /* 이미지 박스, 링크에 호버링시 밑줄*/
+        }
+        /*margin top값 auto bottom값 이렇게 줘도 됨*/
+        .bottom {   
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .bottom .thumb2{
+            margin: auto;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="navbar">
+            <a href="#" class="link"><strong>▦ SIMPLESHOP</strong></a>
+            <ul>
+                <li>
+                    <a href="#" class="link"><strong>Contact</strong></a>
+                    <a href="#" class="link"><strong>Shop</strong></a>
+                    <a href="#" class="link"><strong>Cart</strong></a>
+                    <a href="#" class="link"><strong>Login</strong></a>
+                       
+                </li>
+                
+            </ul>
+        </div>
+        <div class="main-image">
+            <img src="/img/simpleshop_main.jpg" alt="대문이미지"><br>
+            <strong>Everything what you want !!</strong>
+
+        </div>
+    </div>
+    <hr>
+    <div class="boxwrap">   
+        <!-- 각각의 박스를 추가-->
+        
+        <!-- 물품나온 이미지 박스와 물품 제목 모두에 링크가 걸리게 할것이므로 a 태그 먼저-->
+        <!-- 물품 이미지 사이즈 미리 맞춰둘것-->
+        <!-- 첫 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/신발.jpg" alt="신발">
+                </span>
+                <strong class="title_item">여름 신발</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">여름에 시원한 신발</p>
+                <p class="price">20,000원</p>
+            </a>
+        </div>
+        <!-- 두번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/가디건.jpg" alt="가디건">
+                </span>
+                <strong class="title_item">가디건</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">가을 포근한 가디건</p>
+                <p class="price">30,000원</p>
+            </a>
+        </div>
+        <!-- 3번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/냥.jpg" alt="냥">
+                </span>
+                <strong class="title_item">가을 냥</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">가을에 귀여운 냥</p>
+                <p class="price">냥원</p>
+            </a>
+        </div>
+       
+        
+    </div> 
+
+    <div class="boxwrap">   
+        <!-- 각각의 박스를 추가-->
+        
+        <!-- 물품나온 이미지 박스와 물품 제목 모두에 링크가 걸리게 할것이므로 a 태그 먼저-->
+        <!-- 물품 이미지 사이즈 미리 맞춰둘것-->
+        <!-- 5 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/니트.jpg" alt="니트">
+                </span>
+                <strong class="title_item">가을 니트</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">가을에 어울리는 니트</p>
+                <p class="price">20,000원</p>
+            </a>
+        </div>
+        <!-- 6번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/슬렉스.jpg" alt="슬렉스">
+                </span>
+                <strong class="title_item">슬렉스</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">핏한 슬렉스</p>
+                <p class="price">25,000원</p>
+            </a>
+        </div>
+        <!-- 7번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/슈트.jpg" alt="슈트">
+                </span>
+                <strong class="title_item">가성비 슈트</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">시선집중 출근룩</p>
+                <p class="price">90,000원</p>
+            </a>
+        </div>  
+    </div> 
+    
+    <div class="boxwrap">   
+        <!-- 각각의 박스를 추가-->
+        
+        <!-- 물품나온 이미지 박스와 물품 제목 모두에 링크가 걸리게 할것이므로 a 태그 먼저-->
+        <!-- 물품 이미지 사이즈 미리 맞춰둘것-->
+        <!-- 5 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/니트.jpg" alt="니트">
+                </span>
+                <strong class="title_item">가을 니트</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">가을에 어울리는 니트</p>
+                <p class="price">20,000원</p>
+            </a>
+        </div>
+        <!-- 6번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/슬렉스.jpg" alt="슬렉스">
+                </span>
+                <strong class="title_item">슬렉스</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">핏한 슬렉스</p>
+                <p class="price">25,000원</p>
+            </a>
+        </div>
+        <!-- 7번째 박스 set-->
+        <div class="box">
+            <a href="#" class="link">
+                <span class="thumb">
+                    <img src="/img/슈트.jpg" alt="슈트">
+                </span>
+                <strong class="title_item">가성비 슈트</strong> <!-- 굵은 글씨-->
+                <p class="desc_item">시선집중 출근룩</p>
+                <p class="price">90,000원</p>
+            </a>
+        </div>
+    <!-- 여기까지가 본문 -->
+    <hr>
+    <div class="bottom">
+        <a href="#" class="link">
+        <span class="thumb2">
+            <img src="/img/트위터.jpg" alt="트위터">   
+        </span>
+        </a>
+        <a href="#" class="link">
+        <span class="thumb2">
+            <img src="/img/인스타.jpg" alt="인스타">
+        </span>
+        </a>
+        <a href="#" class="link">
+        <span class="thumb2">
+            <img src="/img/유튜브.jpg" alt="유튜브">
+        </span>
+        </a>
+        <br>
+        Contact Us
+    </div>
+
+    <!--sns 연결-->
+    <!-- <div class="footer">
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-facebook-f"></i>
+        <i class="fa fa-twitter"></i>
+    </div> -->
+</div>
+</body>
+</html>

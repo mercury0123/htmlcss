@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box연습문제</title>
+    <!-- 가로세로 300px 박스를 만들고, 안녕하세요 글자를 입력-->
+    <style>
+    .box1{
+        
+        width : 300px;
+        height  : 300px;
+        border:  10px solid black;
+        border-radius: 15px;       
+        
+        background-image: url(/img/rio.gif);
+        background-size: 150px 150px;
+        background-repeat: no-repeat;
+        background-position : center; 
+        text-align: center;
+        text-decoration: underline;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: Arial, Helvetica, sans-serif;
+        
+
+    }
+    .box1:hover {
+            background-color: ivory;
+            border-color: red;
+            box-shadow: 5px 5px 5px gray;
+            text-shadow: 5px 5px 5px gray;
+        } 
+    </style>
+</head>
+<body>
+    <div class="box1">안녕하세요</div>
+</body>
+</html>
